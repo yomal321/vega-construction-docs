@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" type="device">
+  <diagram id="c4-context" name="C4 L1 - System Context">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="System Context — Vega Construction Manager" style="text;html=1;fontSize=22;fontStyle=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="800" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="C4 Level 1 — who uses the system and what it depends on" style="text;html=1;fontSize=13;align=left;verticalAlign=middle;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="50" width="800" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- People -->
+        <mxCell id="admin" value="&lt;b&gt;Admin&lt;/b&gt;&lt;div style=&quot;font-size:10px;&quot;&gt;[Person]&lt;/div&gt;&lt;br&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;Manages users, roles, project access and system settings. Bypasses all permission checks.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#FFFFFF;fontSize=13;arcSize=8;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="220" y="110" width="250" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="staff" value="&lt;b&gt;Project Staff&lt;/b&gt;&lt;div style=&quot;font-size:10px;&quot;&gt;[Person]&lt;/div&gt;&lt;br&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;Estimator / accounts user. Builds catalogs and BSR estimates, logs expenses, records payments — only on projects they own or are assigned to.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#FFFFFF;fontSize=13;arcSize=8;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="560" y="110" width="250" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Core system -->
+        <mxCell id="system" value="&lt;b&gt;Vega Construction Manager&lt;/b&gt;&lt;div style=&quot;font-size:10px;&quot;&gt;[Software System]&lt;/div&gt;&lt;br&gt;&lt;div style=&quot;font-size:12px;&quot;&gt;Per-project price lists and BSR rate analysis, project expenses, supplier and sub-contractor payments, and cash-basis ROI tracking for Vega Homes.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168BD;strokeColor=#0B4884;fontColor=#FFFFFF;fontSize=15;arcSize=6;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="360" y="390" width="420" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- External systems -->
+        <mxCell id="cloudflare" value="&lt;b&gt;Cloudflare Platform&lt;/b&gt;&lt;div style=&quot;font-size:10px;&quot;&gt;[External System]&lt;/div&gt;&lt;br&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;Workers runtime, D1 database and edge rate limiting.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#6B6B6B;fontColor=#FFFFFF;fontSize=13;arcSize=8;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="250" y="700" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="office" value="&lt;b&gt;Excel / PDF Reader&lt;/b&gt;&lt;div style=&quot;font-size:10px;&quot;&gt;[External System]&lt;/div&gt;&lt;br&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;Opens the exported BSR, payment schedule and income statement files.&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#6B6B6B;fontColor=#FFFFFF;fontSize=13;arcSize=8;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="640" y="700" width="250" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <mxCell id="r1" value="Manages users, roles, project&#10;access and settings [HTTPS]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=11;strokeWidth=2;strokeColor=#707070;fontColor=#404040;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="admin" target="system">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" value="Estimates, logs expenses,&#10;records payments [HTTPS]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=11;strokeWidth=2;strokeColor=#707070;fontColor=#404040;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="staff" target="system">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" value="Runs on and stores&#10;all data in [Workers + D1]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=11;strokeWidth=2;strokeColor=#707070;fontColor=#404040;endArrow=block;endFill=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="system" target="cloudflare">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r5" value="Generates .xlsx / .pdf&#10;reports opened in" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=11;strokeWidth=2;strokeColor=#707070;fontColor=#404040;endArrow=block;endFill=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="system" target="office">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="lg" value="Legend" style="swimlane;html=1;whiteSpace=wrap;startSize=26;fontSize=12;fontStyle=1;fillColor=#FFFFFF;strokeColor=#B3B3B3;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="960" y="700" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="lg1" value="Person" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#073B6F;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="lg">
+          <mxGeometry x="12" y="34" width="90" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="lg2" value="In scope" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1168BD;strokeColor=#0B4884;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="lg">
+          <mxGeometry x="115" y="34" width="90" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="lg3" value="External" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#6B6B6B;fontColor=#FFFFFF;fontSize=11;arcSize=12;" vertex="1" parent="lg">
+          <mxGeometry x="12" y="72" width="90" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="lg4" value="Arrow = uses / depends on" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#666666;" vertex="1" parent="lg">
+          <mxGeometry x="112" y="72" width="100" height="26" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

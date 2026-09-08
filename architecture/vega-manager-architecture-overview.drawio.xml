@@ -1,0 +1,75 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" type="device">
+  <diagram id="vega-manager-overview" name="Architecture Overview">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="Vega Construction Manager — Architecture Overview" style="text;html=1;fontSize=20;fontStyle=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="700" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Client -->
+        <mxCell id="browser" value="&lt;b&gt;Browser — Client UI&lt;/b&gt;&lt;br&gt;&lt;br&gt;Dashboard · Projects · Basic Price / Basic Rate&lt;br&gt;Payments · Suppliers · Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=13;arcSize=6;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="290" y="80" width="440" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Workers boundary -->
+        <mxCell id="workers" value="Cloudflare Workers — Next.js server (OpenNext)" style="swimlane;html=1;whiteSpace=wrap;startSize=34;fontSize=14;fontStyle=1;fillColor=#D5E8D4;strokeColor=#82B366;swimlaneFillColor=#F4FAF3;rounded=1;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="240" y="240" width="540" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="mw" value="&lt;b&gt;Middleware — Auth Gate&lt;/b&gt;&lt;br&gt;verifies the session on every request;&lt;br&gt;blocks unauthenticated and non-admin access" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=12;arcSize=8;" vertex="1" parent="workers">
+          <mxGeometry x="60" y="55" width="420" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="&lt;b&gt;API Routes&lt;/b&gt;&lt;br&gt;Auth · Projects · Catalog · BSR &amp;amp; Stages&lt;br&gt;Expenses &amp;amp; Payments · Suppliers · Admin · Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;arcSize=8;" vertex="1" parent="workers">
+          <mxGeometry x="60" y="150" width="420" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="libs" value="&lt;b&gt;Server Libraries&lt;/b&gt;&lt;br&gt;Auth &amp;amp; RBAC · Business Logic · Database Access" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=12;arcSize=8;" vertex="1" parent="workers">
+          <mxGeometry x="60" y="245" width="420" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Database -->
+        <mxCell id="d1" value="&lt;b&gt;Cloudflare D1 Database (SQLite)&lt;/b&gt;&lt;br&gt;&lt;br&gt;Users &amp;amp; Roles · Projects · Catalog &amp;amp; BSR&lt;br&gt;Expenses &amp;amp; Payments · Suppliers · Settings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=13;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="290" y="640" width="440" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- Side: build-time -->
+        <mxCell id="prisma" value="&lt;b&gt;Prisma&lt;/b&gt;&lt;br&gt;schema · migrations · seed&lt;br&gt;&lt;i&gt;build time only&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;fontSize=12;fontColor=#333333;arcSize=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="645" width="240" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="ci" value="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;build &amp;amp; deploy&lt;br&gt;to Cloudflare" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;fontSize=12;fontColor=#333333;arcSize=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="300" width="240" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- Notes -->
+        <mxCell id="note1" value="Prisma defines the schema; at runtime the app queries D1 directly." style="text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="760" width="500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" value="Access = Admin bypass, or role / direct permissions, plus project ownership or membership." style="text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="780" width="600" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="HTTPS · /api/**" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=11;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="browser" target="mw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="session verified" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=11;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="mw" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="permission check + data access" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=11;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="api" target="libs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=11;strokeWidth=2;strokeColor=#333333;endArrow=block;endFill=1;startArrow=block;startFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="libs" target="d1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="migrations &amp;amp; seed" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=11;strokeWidth=2;strokeColor=#9673A6;endArrow=block;endFill=1;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="prisma" target="d1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="deploy" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=11;strokeWidth=2;strokeColor=#666666;endArrow=block;endFill=1;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.4;entryDx=0;entryDy=0;" edge="1" parent="1" source="ci" target="workers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

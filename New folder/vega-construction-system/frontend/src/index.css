@@ -1,0 +1,211 @@
+/* ===========================================================
+   Design tokens — "site ledger" theme: blueprint navy + steel
+   + hazard-amber accent, monospace for anything numeric (rates,
+   money, quantities) to read like a surveyor's rate book rather
+   than a generic admin template.
+   =========================================================== */
+:root {
+  --color-ink: #1c2b39;        /* blueprint navy — headers, primary text */
+  --color-steel: #4a6670;      /* secondary text, borders */
+  --color-paper: #f4f5f2;      /* page background */
+  --color-surface: #ffffff;    /* card/table background */
+  --color-line: #d9dcd6;       /* hairline borders */
+  --color-amber: #e8a33d;      /* accent — hazard-amber, used sparingly */
+  --color-success: #3f7d58;
+  --color-danger: #b23a3a;
+  --color-warning: #b8862e;
+
+  --font-display: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --radius: 4px;
+  --shadow-card: 0 1px 3px rgba(28, 43, 57, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 0.5em;
+}
+
+.numeric {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+a { color: var(--color-ink); }
+
+/* ---------- Layout ---------- */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: var(--color-ink);
+  color: #fff;
+  padding: 24px 0;
+  flex-shrink: 0;
+}
+
+.sidebar .brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 0 20px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 12px;
+}
+.sidebar .brand small {
+  display: block;
+  font-weight: 400;
+  color: var(--color-amber);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.sidebar nav a {
+  display: block;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 13.5px;
+  border-left: 3px solid transparent;
+}
+.sidebar nav a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.sidebar nav a.active {
+  color: #fff;
+  border-left-color: var(--color-amber);
+  background: rgba(255,255,255,0.08);
+}
+
+.main-content {
+  flex: 1;
+  padding: 32px 40px;
+  max-width: 1200px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.topbar .user-chip {
+  font-size: 13px;
+  color: var(--color-steel);
+}
+.topbar .role-badge {
+  display: inline-block;
+  background: var(--color-amber);
+  color: var(--color-ink);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+}
+
+/* ---------- Cards & tables ---------- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 13px;
+}
+th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-steel);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+tr:hover td { background: rgba(28,43,57,0.02); }
+
+/* ---------- Forms ---------- */
+input, select, textarea, button {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+}
+input, select, textarea {
+  padding: 7px 10px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--color-ink);
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--color-amber);
+  outline-offset: -1px;
+}
+label { display: block; font-size: 12px; color: var(--color-steel); margin-bottom: 4px; }
+.field { margin-bottom: 14px; }
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  font-weight: 600;
+  background: var(--color-ink);
+  color: #fff;
+}
+button:hover { background: #29414f; }
+button.secondary { background: transparent; color: var(--color-ink); border: 1px solid var(--color-line); }
+button.danger { background: var(--color-danger); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Status pills ---------- */
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.pill-paid { background: rgba(63,125,88,0.12); color: var(--color-success); }
+.pill-not_received { background: rgba(178,58,58,0.12); color: var(--color-danger); }
+.pill-paid_via_cheque { background: rgba(184,134,46,0.12); color: var(--color-warning); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+.kpi { text-align: left; }
+.kpi .label { font-size: 12px; color: var(--color-steel); text-transform: uppercase; letter-spacing: 0.04em; }
+.kpi .value { font-family: var(--font-mono); font-size: 26px; font-weight: 600; color: var(--color-ink); }
+
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--color-line); margin-bottom: 20px; }
+.tabs button {
+  background: none; color: var(--color-steel); border-radius: 0;
+  border-bottom: 2px solid transparent; padding: 10px 16px; font-weight: 500;
+}
+.tabs button.active { color: var(--color-ink); border-bottom-color: var(--color-amber); font-weight: 600; }
+.tabs button:hover { background: none; color: var(--color-ink); }

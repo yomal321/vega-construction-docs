@@ -1,0 +1,216 @@
+<mxfile host="app.diagrams.net" modified="2026-07-15T00:00:00.000Z" agent="Claude" version="24.0.0" type="device">
+  <diagram name="Vega System Flow (detailed + notes)" id="vega-flow-4">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="1075" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="price_list" value="Price List&#10;Materials, labour, plant rates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#0F6E56;fontSize=14;fontStyle=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="63.0" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="price_list_part0" value="Material&#10;code, unit, price" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0F6E56;dashed=1;fontColor=#0F6E56;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="price_list_part0_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#0F6E56;strokeWidth=1;dashed=1;" edge="1" parent="1" source="price_list_part0" target="price_list">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="price_list_part1" value="Labour&#10;code, unit, price" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0F6E56;dashed=1;fontColor=#0F6E56;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="78.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="price_list_part1_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#0F6E56;strokeWidth=1;dashed=1;" edge="1" parent="1" source="price_list_part1" target="price_list">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="price_list_part2" value="Plant&#10;code, unit, price" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0F6E56;dashed=1;fontColor=#0F6E56;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="116.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="price_list_part2_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#0F6E56;strokeWidth=1;dashed=1;" edge="1" parent="1" source="price_list_part2" target="price_list">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="price_list_note" value="The master list of current material, labour and plant unit prices. Everything else in the system reads from here — nothing is ever priced twice." style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;fontColor=#666666;fontSize=11;fontStyle=2;align=left;spacing=6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="58.0" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="price_list_note_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#999999;dashed=1;" edge="1" parent="1" source="price_list" target="price_list_note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trade_items" value="Trade Items&#10;Composite rates from recipes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1F5EE;strokeColor=#0F6E56;fontColor=#0F6E56;fontSize=14;fontStyle=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="229.0" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="trade_items_part0" value="Item info&#10;code, unit, analysis qty" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0F6E56;dashed=1;fontColor=#0F6E56;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="206.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="trade_items_part0_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#0F6E56;strokeWidth=1;dashed=1;" edge="1" parent="1" source="trade_items_part0" target="trade_items">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trade_items_part1" value="Recipe&#10;base/trade item x qty" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0F6E56;dashed=1;fontColor=#0F6E56;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="244.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="trade_items_part1_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#0F6E56;strokeWidth=1;dashed=1;" edge="1" parent="1" source="trade_items_part1" target="trade_items">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trade_items_part2" value="Floor rates&#10;Ground/1st/2nd/3rd" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0F6E56;dashed=1;fontColor=#0F6E56;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="282.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="trade_items_part2_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#0F6E56;strokeWidth=1;dashed=1;" edge="1" parent="1" source="trade_items_part2" target="trade_items">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trade_items_note" value="Ready-made construction activities (e.g. &#x27;lay foundation&#x27;, &#x27;plaster a wall&#x27;), each built from a recipe of price-list items — so the same combination is never recalculated by hand." style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;fontColor=#666666;fontSize=11;fontStyle=2;align=left;spacing=6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="224.0" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="trade_items_note_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#999999;dashed=1;" edge="1" parent="1" source="trade_items" target="trade_items_note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bsr" value="BSR&#10;Project estimate, live rates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEEDFE;strokeColor=#3C3489;fontColor=#3C3489;fontSize=14;fontStyle=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="395.0" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bsr_part0" value="Header&#10;one per project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3C3489;dashed=1;fontColor=#3C3489;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="372.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bsr_part0_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#3C3489;strokeWidth=1;dashed=1;" edge="1" parent="1" source="bsr_part0" target="bsr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bsr_part1" value="Line items&#10;item, floor, qty, rate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3C3489;dashed=1;fontColor=#3C3489;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="410.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bsr_part1_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#3C3489;strokeWidth=1;dashed=1;" edge="1" parent="1" source="bsr_part1" target="bsr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bsr_part2" value="Grand total&#10;sum of line totals" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3C3489;dashed=1;fontColor=#3C3489;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="448.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="bsr_part2_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#3C3489;strokeWidth=1;dashed=1;" edge="1" parent="1" source="bsr_part2" target="bsr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bsr_note" value="Building Schedule of Rates — the itemized cost estimate shown to the client before they sign, built by choosing trade items and quantities." style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;fontColor=#666666;fontSize=11;fontStyle=2;align=left;spacing=6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="390.0" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="bsr_note_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#999999;dashed=1;" edge="1" parent="1" source="bsr" target="bsr_note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="contract" value="Contract Signed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1EFE8;strokeColor=#444441;fontColor=#444441;fontSize=14;fontStyle=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="550.0" width="280" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="contract_part0" value="Generates&#10;stages (count configurable)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#444441;dashed=1;fontColor=#444441;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="538.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="contract_part0_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#444441;strokeWidth=1;dashed=1;" edge="1" parent="1" source="contract_part0" target="contract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="contract_part1" value="Generates&#10;3 milestones per stage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#444441;dashed=1;fontColor=#444441;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="576.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="contract_part1_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#444441;strokeWidth=1;dashed=1;" edge="1" parent="1" source="contract_part1" target="contract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="contract_note" value="The moment the client accepts the estimate. The project moves from planning into active construction and billing." style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;fontColor=#666666;fontSize=11;fontStyle=2;align=left;spacing=6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="538.0" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="contract_note_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#999999;dashed=1;" edge="1" parent="1" source="contract" target="contract_note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="stages" value="Stages &amp; Payments&#10;Advance / Interim / Final status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAECE7;strokeColor=#993C1D;fontColor=#993C1D;fontSize=14;fontStyle=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="200" y="691.0" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="stages_part0" value="Stage&#10;1 of N per project" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#993C1D;dashed=1;fontColor=#993C1D;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="668.0" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="stages_part0_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#993C1D;strokeWidth=1;dashed=1;" edge="1" parent="1" source="stages_part0" target="stages">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="stages_part1" value="Milestone&#10;Adv 50%/Int 25%/Final 25%" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#993C1D;dashed=1;fontColor=#993C1D;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="706.0" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="stages_part1_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#993C1D;strokeWidth=1;dashed=1;" edge="1" parent="1" source="stages_part1" target="stages">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="stages_part2" value="Status&#10;Paid/Not Received/Cheque" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#993C1D;dashed=1;fontColor=#993C1D;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="744.0" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="stages_part2_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#993C1D;strokeWidth=1;dashed=1;" edge="1" parent="1" source="stages_part2" target="stages">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="stages_note" value="Splits the project into stages, each billed in three parts: Advance, Interim, Final. Tracks which of these have actually been paid." style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;fontColor=#666666;fontSize=11;fontStyle=2;align=left;spacing=6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="170" y="789" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="stages_note_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#999999;dashed=1;" edge="1" parent="1" source="stages" target="stages_note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="expenses" value="Expenses&#10;Vendor, category, invoice log" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAECE7;strokeColor=#993C1D;fontColor=#993C1D;fontSize=14;fontStyle=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="660" y="691.0" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="expenses_part0" value="Vendor&#10;name, invoice ref, date" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#993C1D;dashed=1;fontColor=#993C1D;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="500" y="668.0" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="expenses_part0_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#993C1D;strokeWidth=1;dashed=1;" edge="1" parent="1" source="expenses_part0" target="expenses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="expenses_part1" value="Category&#10;Labour/Material/Sub/Machinery/Transport/Other" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#993C1D;dashed=1;fontColor=#993C1D;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="500" y="706.0" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="expenses_part1_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#993C1D;strokeWidth=1;dashed=1;" edge="1" parent="1" source="expenses_part1" target="expenses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="expenses_part2" value="Linked to&#10;a stage + BOQ trade item" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#993C1D;dashed=1;fontColor=#993C1D;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="500" y="744.0" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="expenses_part2_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#993C1D;strokeWidth=1;dashed=1;" edge="1" parent="1" source="expenses_part2" target="expenses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="expenses_note" value="Every cost the project incurs — labour, materials, subcontractors — logged with who it was paid to and why." style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;fontColor=#666666;fontSize=11;fontStyle=2;align=left;spacing=6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="630" y="789" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="expenses_note_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#999999;dashed=1;" edge="1" parent="1" source="expenses" target="expenses_note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard" value="Dashboard / ROI&#10;Income vs. expense" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F1FB;strokeColor=#0C447C;fontColor=#0C447C;fontSize=14;fontStyle=1;arcSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="932.0" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard_part0" value="Payments&#10;received, outstanding, cheque" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0C447C;dashed=1;fontColor=#0C447C;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="909.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard_part0_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#0C447C;strokeWidth=1;dashed=1;" edge="1" parent="1" source="dashboard_part0" target="dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard_part1" value="Expenses&#10;total by category" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0C447C;dashed=1;fontColor=#0C447C;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="947.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard_part1_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#0C447C;strokeWidth=1;dashed=1;" edge="1" parent="1" source="dashboard_part1" target="dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard_part2" value="ROI&#10;net income vs. expense" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0C447C;dashed=1;fontColor=#0C447C;fontSize=10;align=center;spacing=2;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="985.0" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard_part2_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#0C447C;strokeWidth=1;dashed=1;" edge="1" parent="1" source="dashboard_part2" target="dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard_note" value="The bottom line: total money received minus total money spent, shown as a live profit/loss (ROI) figure for the project." style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;fontColor=#666666;fontSize=11;fontStyle=2;align=left;spacing=6;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="927.0" width="340" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard_note_link" style="endArrow=none;startArrow=none;html=1;strokeColor=#999999;dashed=1;" edge="1" parent="1" source="dashboard" target="dashboard_note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="flow_price_list_trade_items" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4A6670;strokeWidth=1.5;" edge="1" parent="1" source="price_list" target="trade_items">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_trade_items_bsr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4A6670;strokeWidth=1.5;" edge="1" parent="1" source="trade_items" target="bsr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_bsr_contract" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4A6670;strokeWidth=1.5;" edge="1" parent="1" source="bsr" target="contract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_contract_stages" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4A6670;strokeWidth=1.5;" edge="1" parent="1" source="contract" target="stages">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_contract_expenses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4A6670;strokeWidth=1.5;" edge="1" parent="1" source="contract" target="expenses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_stages_dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4A6670;strokeWidth=1.5;" edge="1" parent="1" source="stages" target="dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_expenses_dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#4A6670;strokeWidth=1.5;" edge="1" parent="1" source="expenses" target="dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
