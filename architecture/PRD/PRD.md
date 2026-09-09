@@ -182,7 +182,6 @@ numbers actually behave:
 | Hosting migration to Azure App Service | 🔧 In progress |
 | CI/CD migration to Azure DevOps | 🔧 Blocked — pending an Azure DevOps access-level upgrade (current account is on a restricted "Stakeholder" tier that cannot access Git repos) |
 | Pre-handover backend security audit (12 route families) | 🔧 In progress — 1 of 12 families complete and passed with minor notes; remaining 11 not yet started |
-| BRD Gap #11 — rate-change propagation warning | ⏳ Open — when an ingredient's price changes, dependent BSR items are not automatically flagged for review. A fix has been proposed (a flag + one-click update); pending client decision |
 
 ---
 
