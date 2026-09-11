@@ -162,7 +162,7 @@ numbers actually behave:
 
 *(Detail for engineering reference — see `architecture/` in this repo for full diagrams.)*
 
-- **Stack**: Next.js 15 (React 19), TypeScript, Tailwind CSS
+- **Stack**: Next.js 16 (React 19), TypeScript, Tailwind CSS
 - **Database**: PostgreSQL (migrated from Cloudflare D1/SQLite in September 2026), schema
   managed via Prisma
 - **Hosting**: currently Cloudflare Workers; **migrating to Azure App Service** per client/company

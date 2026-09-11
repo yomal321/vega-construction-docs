@@ -879,7 +879,27 @@ decision rather than leaving it looking accidental.
 
 ---
 
-## Phase 7 — Edge WAF and rate limiting (0.5 day)
+## Phase 7 — Edge WAF and rate limiting (0.5 day) — ⚠️ SUPERSEDED, Cloudflare-only (see Phase 7 (Azure) below)
+
+> **This section describes Cloudflare-specific work and no longer matches where this app is
+> going. Do not use it to plan new work — jump to "Phase 7 (Azure)" below.** As of 2026-09-07
+> the client mandated moving hosting off Cloudflare Workers/D1 to Azure (tracked in
+> `[[azure_migration_direction]]`). Everything below this banner — the Managed Rules toggle,
+> the `wrangler.toml` rate-limit binding, the Cloudflare-only runbook — is tied to Cloudflare
+> primitives that will not exist once that move happens.
+>
+> **What was actually built here before the Azure mandate, for the record:** 7.2/7.3 were
+> resolved in favour of the Workers-native rate-limiting binding (it GA'd 2025-09-19, so the
+> "verify GA status first" caution below was satisfied) — `LOGIN_RATE_LIMITER` is live in
+> `wrangler.toml` and wired through `src/lib/edgeRateLimit.ts`. 7.4's runbook was written:
+> `doc/test/security/CLOUDFLARE_SECURITY_RUNBOOK.md`. **7.1 (Cloudflare Managed
+> Rules/OWASP core set) was never enabled** — it's a dashboard-only toggle with no owner
+> assigned, so it was the one item still open when the Azure mandate landed. None of this
+> Cloudflare-side status matters for what to build next; it's kept only so the reasoning
+> isn't lost if a Cloudflare rollback is ever discussed.
+>
+> Everything below this banner is kept as a record of what was designed and built, exactly
+> like Phase 5's banner above does for MFA.
 
 ### Honest framing
 The source doc marks this ❌ because "nothing configured in `wrangler.toml`". Most
@@ -900,6 +920,76 @@ and the row should be judged on that basis.
 - **7.4 New `doc/test/security/CLOUDFLARE_SECURITY_RUNBOOK.md`** — record every dashboard
   setting, with screenshots, so the configuration is reproducible after a handover. This is
   the actual deliverable for the settings that cannot be committed.
+
+---
+
+## Phase 7 (Azure) — Edge WAF and rate limiting — 📋 PLANNED, not started
+
+**Replaces the Cloudflare-based Phase 7 above, one-for-one.** Same goal (edge-level brute-force
+defence + a managed WAF ruleset in front of the app), different platform. Written against the
+hosting direction in `[[azure_migration_direction]]`.
+
+### Blocked on one open decision
+This phase cannot be finished — arguably cannot really be *started* — until the Azure hosting
+target is settled: **App Service vs. Container Apps**, and confirming **Front Door** sits in
+front of either one. Both the WAF and the rate limiting below assume Front Door. If a different
+edge service is chosen instead, this section needs re-writing again.
+
+### 7.1 (Azure) — Managed WAF ruleset
+Direct equivalent of the old 7.1. **Azure Front Door (Premium tier)** ships a WAF with a
+managed **OWASP Core Rule Set**, the same rule family Cloudflare's Managed Rules are built on.
+Enable it on the Front Door profile in front of App Service/Container Apps. Dashboard/ARM
+config, not application code — same "partly a runbook, not code" framing as the original 7.1.
+**Note the tier requirement:** the WAF managed ruleset needs Front Door **Premium**, not
+Standard — confirm the SKU before assuming this is free.
+
+### 7.2 (Azure) — Rate limit `POST /api/auth/login` at the edge
+Front Door has its own rate-limiting rule action (Rules Engine / WAF custom rules), the
+equivalent of the old Cloudflare dashboard rule. Same reasoning as before: this sits *in front
+of* the Phase 3 application-level throttle, stopping traffic before it costs App
+Service/Container Apps compute, while Phase 3 still covers anyone who reaches the origin
+directly.
+
+### 7.3 (Azure) — Lock the origin to Front Door only
+**Not just a renamed 7.3.** Cloudflare Workers has no separate "origin" to protect — the Worker
+*is* the edge. Azure's model does: App Service/Container Apps is a real origin sitting behind
+Front Door, reachable directly unless blocked. Skipping this step lets an attacker bypass both
+the new WAF and the new rate limit entirely by hitting the origin URL straight. **Restrict
+inbound access to Front Door's traffic only** (App Service access restrictions by Front Door ID,
+or a private origin behind Private Link for Container Apps), and validate the
+`X-Azure-FDID` header server-side so a spoofed header claiming to be Front Door doesn't bypass
+the restriction.
+
+### 7.4 (Azure) — Fix the client-IP source
+**This is the sharpest risk in this whole phase, flagged already in `[[azure_migration_direction]]`.**
+`src/app/api/auth/login/route.ts` and `src/lib/loginThrottle.ts` currently read the real client
+IP from `cf-connecting-ip` — a Cloudflare-only header that will simply stop being populated on
+Azure. **Do not "fix" this by switching to `x-forwarded-for`** — the existing code comment
+explicitly warns XFF is client-spoofable, and a naive swap silently reopens the exact
+login-throttle-evasion gap Phase 3 was built to close (fake a new IP on every request, never
+lock). The correct replacement is Front Door's own forwarded-client-IP header, used **only**
+once 7.3 guarantees every request genuinely passed through Front Door — otherwise the header
+itself becomes spoofable again by anyone who can reach the origin directly.
+
+### 7.5 (Azure) — New runbook
+Replaces 7.4's Cloudflare runbook. New `doc/test/security/AZURE_SECURITY_RUNBOOK.md` — same
+purpose (every dashboard/ARM setting that can't be committed, recorded for handover), Front
+Door/App Service specific instead of Cloudflare specific. Do not edit
+`CLOUDFLARE_SECURITY_RUNBOOK.md` in place — leave it as the historical record for the Cloudflare
+period, per this phase's own banner above.
+
+### Acceptance
+- Front Door WAF (managed OWASP ruleset) enabled and confirmed active (a known-bad request
+  pattern, e.g. a basic SQLi test string, gets blocked at the edge with a WAF response, not a
+  200 or an app-level error).
+- A burst of requests against `POST /api/auth/login` beyond the Front Door rate-limit threshold
+  gets rejected at the edge before reaching the app.
+- The same burst sent **directly** at the App Service/Container Apps origin URL (bypassing Front
+  Door) is rejected outright by the access restriction — confirms 7.3 actually closes the
+  bypass, not just that the happy path works.
+- `login_throttle` rows still key on a real, non-spoofable client IP after the swap — verified
+  the same way Phase 3 was originally verified (distinct IPs don't share a lockout bucket, and a
+  forged IP header sent straight at the origin has no effect once 7.3/7.4 are both in place).
 
 ---
 
@@ -1024,11 +1114,25 @@ and the row should be judged on that basis.
 - [ ] 6.5 Clear violations, flip to enforcing
 - [ ] 6.6 Document the `style-src 'unsafe-inline'` concession
 
-### Phase 7 — Edge WAF
-- [ ] 7.1 Enable Cloudflare Managed Rules
-- [ ] 7.2 Dashboard rate-limit rule on `POST /api/auth/login`
-- [ ] 7.3 Evaluate the Workers rate-limit binding (verify current syntax/GA first)
-- [ ] 7.4 Write `CLOUDFLARE_SECURITY_RUNBOOK.md`
+### Phase 7 — Edge WAF — ⚠️ SUPERSEDED, Cloudflare-only — see "Phase 7 (Azure)" below
+- [ ] 7.1 Enable Cloudflare Managed Rules — **still genuinely open, but moot**: no owner
+      assigned before the Azure mandate landed, and Cloudflare is being left regardless
+- [x] 7.2 Dashboard rate-limit rule on `POST /api/auth/login` — done differently than planned,
+      see banner above (Workers-native binding, not the dashboard rule)
+- [x] 7.3 Evaluate the Workers rate-limit binding (verify current syntax/GA first) — GA'd
+      2025-09-19, adopted; `LOGIN_RATE_LIMITER` in `wrangler.toml` / `src/lib/edgeRateLimit.ts`
+- [x] 7.4 Write `CLOUDFLARE_SECURITY_RUNBOOK.md` — done, kept as historical record only
+
+### Phase 7 (Azure) — Edge WAF — 📋 PLANNED, blocked on the App Service/Container Apps decision
+- [ ] 7.1 (Azure) Enable Front Door **Premium** WAF with the managed OWASP Core Rule Set
+- [ ] 7.2 (Azure) Front Door rate-limit rule on `POST /api/auth/login`
+- [ ] 7.3 (Azure) Restrict App Service/Container Apps ingress to Front Door only; validate
+      `X-Azure-FDID` server-side
+- [ ] 7.4 (Azure) Replace `cf-connecting-ip` with Front Door's client-IP header in
+      `src/app/api/auth/login/route.ts` / `src/lib/loginThrottle.ts` — **only after 7.3 lands**,
+      never via a naive `x-forwarded-for` swap (client-spoofable, reopens throttle evasion)
+- [ ] 7.5 (Azure) New `doc/test/security/AZURE_SECURITY_RUNBOOK.md`; leave
+      `CLOUDFLARE_SECURITY_RUNBOOK.md` untouched as history
 
 ---
 
@@ -1045,7 +1149,7 @@ and the row should be judged on that basis.
 | Authorization | *(already ✅)* | 0.1 hardens it |
 | Transport | HTTPS / HSTS *(corrected to ⚠️)* | 1.1 |
 | Transport | Security headers | Phase 1 + Phase 6 |
-| Transport | WAF / edge rate limiting | Phase 7 |
+| Transport | WAF / edge rate limiting | ~~Phase 7~~ superseded — **Phase 7 (Azure)** |
 | Transport | Dependencies patched *(corrected to ❌)* | 0.4 – 0.7 |
 | Data | Input validation | Phase 4 |
 | Process | "Assume breach" layering | Phase 2, as a side effect |

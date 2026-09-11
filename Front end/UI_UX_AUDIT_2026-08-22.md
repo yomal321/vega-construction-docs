@@ -3,7 +3,7 @@
 **Date:** 2026-08-22
 **Method:** Full-text design read of every routed page + the shared component layer. No runtime/usability testing performed — this is a static read of the code, not a substitute for watching a real estimator or admin use the app.
 **Scope:** 16 routes, the shared component layer (`src/components/`), and the project-detail view (`src/app/projects/[id]/client.tsx`, 4,233 lines).
-**Stack observed:** Next.js 15 + Tailwind + Framer Motion + SWR, dark-mode-first.
+**Stack observed:** Next.js 16 + Tailwind + Framer Motion + SWR, dark-mode-first.
 
 ## Summary
 
