@@ -3,7 +3,7 @@
 **Date:** 2026-09-09
 **Source:** `UNAUTHORIZED_ACCESS_REMEDIATION_PLAN.md` Phase 6 (the last open code-side phase)
 **Scope:** ship a full CSP on every document response, report-only first, then enforcing.
-**Status:** 🚧 in progress — started 2026-09-09.
+**Status:** ✅ done 2026-09-11 (6.1–6.18; 6.19 optional, not built — see its own note).
 
 **Design constraint, same as the 2026-09-01 and 2026-09-05 plans:** change only what the phase
 requires. No refactors, no renames. One new dependency-free helper, one vendored asset, one new
@@ -364,35 +364,63 @@ asset. Unlike Phases 2 and 5, **no forced logout** — nothing about the session
 - [x] 6.8 Read `x-nonce` in `src/app/layout.tsx`; nonce the theme script (`RootLayout` → async) — verified live, exact nonce match confirmed in the raw served HTML
 - [x] 6.9 Ship as `Content-Security-Policy-Report-Only`; keep the standalone `frame-ancestors` enforced — a direct consequence of 6.4-6.8, confirmed live: both headers present simultaneously on the same response
 - [x] 6.10 Add `tests/05-csp.spec.ts` with `securitypolicyviolation` capture via `addInitScript` — written, typechecks clean; covers every static route (fetching dynamic ids live via the API rather than hardcoding), a Staff denial-panel path, and a Basic Rate export→re-import round trip that reuses the app's own export as the import fixture (exercises task 6.1's vendored pdf.worker.min.mjs)
-- [ ] 6.11 Sweep every authenticated route; confirm zero violations — **blocked, see note below**
-- [ ] 6.12 Exercise all five PDF exports + XLSX export; confirm zero violations — **blocked, see note below**
-- [ ] 6.13 Exercise PDF import + XLSX import; confirm zero violations — **blocked, see note below**
+- [x] 6.11 Sweep every authenticated route; confirm zero violations — done 2026-09-11, see notes below
+- [x] 6.12 Exercise all five PDF exports + XLSX export; confirm zero violations — done 2026-09-11, covered by the same export/import test as 6.13
+- [x] 6.13 Exercise PDF import + XLSX import; confirm zero violations — done 2026-09-11
 
-**Blocker found while running 6.11-6.13 (2026-09-09), unrelated to CSP:** `tests/helpers.ts`'s
-`PASSWORD = 'VegaDemo-2026!'` (matching `prisma/seed.ts`'s `DEMO_PASSWORD`) no longer
-authenticates `nimal@vegahomes.lk` against the live `DATABASE_URL` (a shared Supabase Postgres
-instance — see [[azure_migration_direction]]). Every login in the sweep failed with a genuine
-401, which is exactly what tripped `login_throttle` after 5 attempts (`isLocked()`/
-`recordFailure()` in `src/lib/loginThrottle.ts` worked correctly — this was the throttle
-protecting the account as designed, not a bug). Cleared via `resetThrottle()` (called directly
-through the app's own code, not the stale `execLocalSql`-based `clearLoginThrottle()` helper —
-see the file-header note in `05-csp.spec.ts`) so the account isn't left locked for its real
-owner. **Did not attempt further password guesses or reset anyone's credentials** — this is a
-shared, apparently actively-used database (users/roles/statuses all present and consistent with
-the seed, only the password differs), not a disposable local sandbox, and guessing further would
-itself be the exact brute-force behavior Phase 3 defends against.
+**Original blocker (2026-09-09), resolved 2026-09-11 by a larger event, not by finding the old
+password:** `tests/helpers.ts`'s demo-seed accounts (`nimal@`/`sanduni@`/`kasun@`/`dilini@`/
+`ruwan@vegahomes.lk`) were removed outright on 2026-09-11 when the app cut over to a brand-new
+Supabase Postgres project seeded with the real users/roles carried over from the prior DB (see
+`[[azure_migration_direction]]`). `helpers.ts` now points `ADMIN` at a real account
+(`yomaltheekshana66@gmail.com`) and `STAFF` at a disposable test-only account
+(`csp-test-staff@vegahomes.lk`, zero roles/permissions — same "denial panel only" role Kasun
+played in the old seed) created specifically for this sweep. `ADMIN2`/`STAFF2`/`INACTIVE` still
+point at the now-deleted demo emails; nothing in this file uses them.
 
-**What this does and doesn't affect:** tasks 6.1-6.9 needed no login (GET requests / raw HTML
-inspection only) and are independently verified live, unaffected by this. Only 6.11-6.13's
-full authenticated Playwright sweep is blocked — pending either the current correct password for
-the test accounts, or explicit authorization to reset one via the app's normal admin-reset flow
-(not a raw DB write). Once unblocked, `05-csp.spec.ts` is ready to run as-is.
-- [ ] 6.14 Resolve any `wasm` violation with `'wasm-unsafe-eval'` only if observed; document it
-- [ ] 6.15 Flip to `Content-Security-Policy` and delete `securityHeaders.ts:18` in one change
-- [ ] 6.16 Re-run 6.11–6.13 against the **enforcing** policy
-- [ ] 6.17 Verify `npm run dev` still works and production omits `'unsafe-eval'`
-- [ ] 6.18 Document the `style-src 'unsafe-inline'` concession and the nonce/`unsafe-inline` gotcha
-- [ ] 6.19 Optional: `scripts/audit-csp.js` + CI wiring (inline-script nonce, external-origin guard)
+**Two more things found and fixed to actually get 6.11-6.13 running, neither one a CSP bug:**
+- **`waitForLoadState('networkidle')` never resolves on this app.** Confirmed with a throwaway
+  diagnostic script logging every request: the sidebar (present on every authenticated page)
+  renders a `<Link>` to every route, and Next's router prefetches all of them on mount — those
+  prefetch requests keep getting aborted and re-fired in a loop that never goes quiet, regardless
+  of app health. Every route relying on `networkidle` hung for the test's full budget until
+  Playwright force-closed the page. Fixed in `05-csp.spec.ts` by waiting for `'load'` plus a
+  bounded 2s settle delay instead — this is a test-file fix, not a product one.
+- **The new Supabase project's session-mode pooler caps the whole app at 15 concurrent DB
+  clients**, and `src/lib/pg.ts`'s own pool already asks for up to 10 — a single page load fires
+  ~8-10 concurrent API calls (`CatalogProvider` alone hits 8 endpoints), so a second tab or a
+  quick back-to-back test run can occasionally exhaust it. Reproduced directly against Postgres
+  (not guessed): `EMAXCONNSESSION: max clients reached in session mode - max clients are limited
+  to pool_size: 15`. **Deliberately not fixed in product code** — Supabase is a temporary stop
+  before tonight's move to Azure, per explicit direction from the developer, so `05-csp.spec.ts`
+  works around it with a test-only retry helper (`fetchJsonArray`) instead of touching
+  `src/lib/pg.ts`. Flagging this here so it isn't lost: if the Azure move slips, this connection
+  ceiling is a real, easily-reproduced production risk under any real concurrent usage, not just a
+  test artifact.
+
+Also seeded `suppliers`/`sub_contractors` (previously empty, so their `/[id]` sweep tests always
+skipped) with two rows each — see task list note, not a CSP task, done opportunistically here.
+
+**Verified live, `next start` (production build, NODE_ENV=production) against the new DB** — not
+the real OpenNext/Cloudflare Worker build: `opennextjs-cloudflare build` is blocked on this
+Windows machine by a genuine file-lock on `.open-next/assets` (confirmed with PowerShell's own
+`Remove-Item`, not a Node quirk; no `handle.exe` available to identify the locking process). Using
+`next start` instead is not equivalent in every respect — Cloudflare-adapter-specific header
+stripping (a real gap Phase 1 already found once, on middleware/proxy short-circuit responses) is
+the one thing it can't catch — but it correctly reproduces the one thing that matters most for
+this phase: `NODE_ENV=production` omits `'unsafe-eval'` from the served policy, same as the real
+deploy would. All 21 tests in `05-csp.spec.ts` passed against this server: every static admin
+route, `/projects/[id]`, `/users/[email]`, `/suppliers/[id]`, `/sub-contractors/[id]`, the Staff
+denial panel, unauthenticated `/login`, and the full Basic Rate export→re-import round trip
+(Excel + PDF, exercising the vendored pdf.js worker). Whoever next has a working
+`opennextjs-cloudflare build` on this project (e.g. from WSL or CI) should re-run this file once
+against the real Worker build to close that one remaining gap.
+- [x] 6.14 Resolve any `wasm` violation with `'wasm-unsafe-eval'` only if observed; document it — not needed, no wasm (or any) violation observed across all 21 tests
+- [x] 6.15 Flip to `Content-Security-Policy` and delete `securityHeaders.ts:18` in one change — done 2026-09-11, both in the same edit
+- [x] 6.16 Re-run 6.11–6.13 against the **enforcing** policy — done 2026-09-11, all 21 tests still pass with the enforcing header (`content-security-policy`, not `-report-only`) confirmed via `curl -I`
+- [x] 6.17 Verify `npm run dev` still works and production omits `'unsafe-eval'` — done 2026-09-11: a throwaway dev server on port 3050 showed `'unsafe-eval'` present in its policy, the `next start` production server on port 3000 showed it absent, confirmed both via `curl -I`
+- [x] 6.18 Document the `style-src 'unsafe-inline'` concession and the nonce/`unsafe-inline` gotcha — done 2026-09-11, recorded as a decision at the bottom of `securityHeaders.ts` (the nonce gotcha was already documented above `buildCsp`)
+- [ ] 6.19 Optional: `scripts/audit-csp.js` + CI wiring (inline-script nonce, external-origin guard) — not built, optional and not required to close this phase
 
 ### Follow-ups this phase deliberately does not take
 - [ ] `report-uri`/`report-to` violation collection — declined above; revisit only on request
@@ -404,8 +432,13 @@ the test accounts, or explicit authorization to reset one via the app's normal a
 
 ## Definition of done
 
-`UNAUTHORIZED_ACCESS_REMEDIATION_PLAN.md`'s "Transport → Security headers" row can go ✅ (it is
-currently closed only by Phase 1, with Phase 6 outstanding). That leaves Phase 7's Cloudflare
-Managed Rules — dashboard-only, no owner assigned, tracked in
-`CLOUDFLARE_SECURITY_RUNBOOK.md`'s handover checklist — as the sole remaining item from the
-original plan, and it is not a code task.
+`UNAUTHORIZED_ACCESS_REMEDIATION_PLAN.md`'s "Transport → Security headers" row can now go ✅ —
+closed by Phase 1 **and** Phase 6, both done. That leaves Phase 7's Cloudflare Managed Rules —
+dashboard-only, no owner assigned, tracked in `CLOUDFLARE_SECURITY_RUNBOOK.md`'s handover
+checklist — as the sole remaining item from the original plan, and it is not a code task.
+
+One caveat worth carrying forward: this phase's live verification ran against `next start`
+(production Next.js server), not the real OpenNext/Cloudflare Worker build, because that build is
+currently blocked on this Windows machine by a file lock unrelated to CSP (see the 6.11-6.13
+notes above). Re-run `05-csp.spec.ts` against a real `npm run preview` once one is available
+(WSL or CI) to close that last gap before calling Phase 6 fully closed end-to-end.

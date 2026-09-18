@@ -845,7 +845,14 @@ totaling 38 assertions, all passing — every one of the acceptance criteria abo
 
 ---
 
-## Phase 6 — Content-Security-Policy (2 days)
+## Phase 6 — Content-Security-Policy (2 days) — ✅ done 2026-09-11, see `CSP_PHASE6_PLAN_2026-09-09.md`
+
+> This section is the original sketch, kept for context. The authoritative record of what was
+> actually built — the 19-task breakdown, three obstacles this sketch missed, and full live
+> verification notes — is `doc/test/security/CSP_PHASE6_PLAN_2026-09-09.md`. Short version: shipped
+> report-only, verified violation-free with a 21-test Playwright sweep (every route, PDF/XLSX
+> export+import via the vendored pdf.js worker, a Staff denial panel), then flipped to enforcing
+> and re-verified clean under that too.
 
 Split from Phase 1 because it is the one header that can break the app.
 
@@ -1106,13 +1113,20 @@ period, per this phase's own banner above.
 - [x] 5.13 Verify `mfa_pending` token authorises nothing else — confirmed live, rejected when submitted as a session cookie
 - [x] 5.14 Verify TOTP replay and recovery-code reuse both rejected — confirmed live with real computed codes, not just code inspection
 
-### Phase 6 — CSP
-- [ ] 6.1 Per-request nonce in middleware
-- [ ] 6.2 Nonce the `layout.tsx` theme-init script
-- [ ] 6.3 Ship `Content-Security-Policy-Report-Only`
-- [ ] 6.4 One week of real use; collect violations (incl. PDF export, XLSX import)
-- [ ] 6.5 Clear violations, flip to enforcing
-- [ ] 6.6 Document the `style-src 'unsafe-inline'` concession
+### Phase 6 — CSP — ✅ done 2026-09-11 — this sketch was superseded by
+`doc/test/security/CSP_PHASE6_PLAN_2026-09-09.md`'s own 19-task list (6.1-6.19 there), which is
+the authoritative record — see that file for what actually happened. Summary: nonce'd CSP shipped
+report-only, verified violation-free across all 21 Playwright checks (every route, the Staff
+denial panel, and the full PDF/XLSX export→import round trip via the vendored pdf.js worker), then
+flipped to enforcing and re-verified clean. "One week of real use" (6.4 below) was deliberately
+replaced with the deterministic Playwright sweep instead — see that doc's "Why not a week of
+report-only" section for why.
+- [x] 6.1 Per-request nonce in middleware — now `src/proxy.ts`, renamed under the Next.js 16 upgrade
+- [x] 6.2 Nonce the `layout.tsx` theme-init script
+- [x] 6.3 Ship `Content-Security-Policy-Report-Only`
+- [x] 6.4 One week of real use; collect violations (incl. PDF export, XLSX import) — replaced by a deterministic Playwright sweep (`tests/05-csp.spec.ts`, 21/21 passing) rather than elapsed real-usage time; see the linked doc
+- [x] 6.5 Clear violations, flip to enforcing — zero violations found, flipped directly
+- [x] 6.6 Document the `style-src 'unsafe-inline'` concession — recorded in `src/lib/securityHeaders.ts`
 
 ### Phase 7 — Edge WAF — ⚠️ SUPERSEDED, Cloudflare-only — see "Phase 7 (Azure)" below
 - [ ] 7.1 Enable Cloudflare Managed Rules — **still genuinely open, but moot**: no owner
