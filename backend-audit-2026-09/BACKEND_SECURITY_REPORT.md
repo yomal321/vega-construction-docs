@@ -55,25 +55,34 @@ correctly under direct, repeated testing.
 
 ## Finding register (sorted by severity)
 
-| ID | Family | Title | Severity | Confidence |
+**Fix status as of 2026-09-21 (post-audit remediation pass, branch `dev`):** all 24 changed
+files are currently **uncommitted** in the working tree on branch `dev` — the branch checked
+out mid-session (switched from `vega/fix-session-secret` to `dev` by something outside this
+session; nothing was lost, see the session record if reconciling later). Review and commit
+when ready. Every finding below except
+`X-08` has been fixed and re-verified live against its own original repro steps — zero
+regressions on a full `tsc --noEmit` + guard-sweep + positive-input sanity pass. `X-08` was
+deliberately deferred by the client's own request, for a separate discussion.
+
+| ID | Family | Title | Severity | Status |
 |---|---|---|---|---|
-| `X-08` | Cross-cutting (1) | `/api/healthz`/`/api/ready` gated behind session auth — blocks k3s deployment | **Critical** (deployability) | Confirmed |
-| `F-04-01` | 4 | Negative payment amount defeats the overpayment guard, corrupts paid/ROI totals | **Critical** | Confirmed, still open |
-| `F-07-01` | 7 | Basic Rate `rate` accepts negative values via the primary create/edit routes | **Critical** | Confirmed |
-| `F-08-01` | 8 | Same defect via the global Basic Rate routes (cross-ref `F-07-01`) | **Critical** | Confirmed |
-| `M-04-01` | 4 | Expense creation accepts a negative `amount` | High | Confirmed |
-| `M-06-01` | 6 | Basic Price draft/promotion `price` accepts negative values | High | Confirmed |
-| `M-03-01` | 3 | `Stage.value` override accepts a negative number, defeating the over-budget guard's math | High | Confirmed |
-| `AUTHZ-VULN-02` | 8 | Global promote endpoint has no unique-violation catch — race → uncaught 500 (no data duplication) | High | Confirmed, partially open |
-| `M-05-01` | 5 | `BsrLine.qty` accepts a negative value | Medium | Confirmed |
-| `M-05-02` | 5 | Duplicate Activity Item code → uncaught 500 instead of clean 409 | Medium | Confirmed |
-| `M-09-01` | 9 | Lookup-table name race → uncaught 500 (same shape as `AUTHZ-VULN-02`) | Medium | Confirmed |
-| `M-11-01` | 11 | Case-variant duplicate user email accepted | Medium | Confirmed, Admin-only reach |
-| `X-09` | 12 | `dashboard:view`/`payments:view` expose named company-wide data, unscoped by design | Medium (disclosure/sign-off) | Confirmed |
-| `B-04-01` | 4 | Payment deletion gated by `projects:delete` rather than `edit` | Info | Unconfirmed as a defect — plausibly intentional |
-| `S1` tokenizer gaps | Cross-cutting | `rewritePlaceholders()` mishandles dollar-quoting, `E''` strings, nested comments | Low/Info | Confirmed defect, confirmed unreachable today |
-| `S8` | Cross-cutting | Client-supplied `X-Real-Ip` trusted with no app-layer validation | Open (known) | Confirmed at app layer; deployment-layer mitigation unverifiable from this repo |
-| `S9` | Cross-cutting | `rejectUnauthorized: false` on the DB TLS connection | Open (known) | Confirmed, code's own TODO |
+| `X-08` | Cross-cutting (1) | `/api/healthz`/`/api/ready` gated behind session auth — blocks k3s deployment | **Critical** (deployability) | 🔶 **Deferred** — not fixed yet, separate discussion |
+| `F-04-01` | 4 | Negative payment amount defeats the overpayment guard, corrupts paid/ROI totals | **Critical** | ✅ **Fixed** — `.positive()` added, re-tested live, returns `400` |
+| `F-07-01` | 7 | Basic Rate `rate` accepts negative values via the primary create/edit routes | **Critical** | ✅ **Fixed** |
+| `F-08-01` | 8 | Same defect via the global Basic Rate routes (cross-ref `F-07-01`) | **Critical** | ✅ **Fixed** |
+| `M-04-01` | 4 | Expense creation accepts a negative `amount` | High | ✅ **Fixed** (also closed the same gap on expense line-item `amount`, not previously filed as its own id) |
+| `M-06-01` | 6 | Basic Price draft/promotion `price` accepts negative values | High | ✅ **Fixed** |
+| `M-03-01` | 3 | `Stage.value` override accepts a negative number, defeating the over-budget guard's math | High | ✅ **Fixed** (also closed the same gap on `expandContractTo`, not previously filed as its own id) |
+| `AUTHZ-VULN-02` | 8 | Global promote endpoint has no unique-violation catch — race → uncaught 500 (no data duplication) | High | ✅ **Fixed** — re-raced 15 rounds, 0/15 server errors (was 13/15) |
+| `M-05-01` | 5 | `BsrLine.qty` accepts a negative value | Medium | ✅ **Fixed** |
+| `M-05-02` | 5 | Duplicate Activity Item code → uncaught 500 instead of clean 409 | Medium | ✅ **Fixed** |
+| `M-09-01` | 9 | Lookup-table name race → uncaught 500 (same shape as `AUTHZ-VULN-02`) | Medium | ✅ **Fixed** — re-raced on `trades`, 0/5 server errors (was 2/5); same fix applied to `categories`/`units` |
+| `M-11-01` | 11 | Case-variant duplicate user email accepted | Medium | ✅ **Fixed** — re-tested live, returns `409` |
+| `X-09` | 12 | `dashboard:view`/`payments:view` expose named company-wide data, unscoped by design | Medium (disclosure/sign-off) | ✅ **Fixed** — client chose to scope it; re-tested live, a single-project Staff account's response now differs from Admin's |
+| `B-04-01` | 4 | Payment deletion gated by `projects:delete` rather than `edit` | Info | Not touched — plausibly intentional, left as-is per plan |
+| `S1` tokenizer gaps | Cross-cutting | `rewritePlaceholders()` mishandles dollar-quoting, `E''` strings, nested comments | Low/Info | Not touched — unreachable by any current query, client chose to skip (YAGNI) |
+| `S8` | Cross-cutting | Client-supplied `X-Real-Ip` trusted with no app-layer validation | Open (known) | Not touched — needs a cluster-admin-side Traefik config check, not a code fix |
+| `S9` | Cross-cutting | `rejectUnauthorized: false` on the DB TLS connection | Open (known) | Not touched — needs a real Postgres CA certificate from infrastructure, client chose to leave as documented risk |
 
 **Also confirmed this session, not filed as a numbered finding (documented for completeness):**
 
