@@ -20,7 +20,7 @@ what the database actually contains. As of `0026_remove_mfa.sql` the two agree �
 
 ---
 
-## Identity & Access (7 tables)
+## Identity & Access (8 tables)
 
 Authentication is **single-factor by design** — the client declined MFA, so there is no second factor
 and no authenticator enrollment. Brute-force resistance comes from `login_throttle` plus the Cloudflare
@@ -65,6 +65,21 @@ Composite PK (`userId` → users, `roleId` → roles). No group layer — roles 
 ### `user_permissions`
 Composite PK (`userId` → users, `module`, `action`). A third grant path: a direct per-user permission
 with no role involved. Effective access = **union** of role permissions and these.
+
+### `payment_filter_presets`
+`id` PK · `userId` → users (**cascade**) · `name` · `query` · `isDefault` · `createdAt` · `updatedAt`
+
+A user's **saved views** for the Payments page (`/api/payments/filter-presets`). Strictly private: every
+query is scoped to the caller's `userId`, and another user's id answers 404.
+- `query` is the filter query string (`status=outstanding&project=p1`), validated with the same schema
+  `GET /api/payments` uses (`lib/paymentFilters.ts`) and stored normalised, **never with a page number** —
+  a saved view always opens on page 1.
+- **unique** (`userId`, `lower(name)`) — one name per user, case-insensitively.
+- **unique** (`userId`) **where `isDefault`** — at most one default view per user. A partial unique index, so
+  it is a database guarantee, not something the API has to get right on every path.
+- At most 20 per user (checked in the API). Added by `20261013000000_payments_filters`.
+
+Prisma can't express the expression/partial indexes above, so they live in the migration SQL only.
 
 ---
 
@@ -164,12 +179,20 @@ Supplier on one expense and a SubContractor on another. Two tables let that be o
 | `amount` | Total owed. **Never mutated by payment activity** |
 | `supplierId` | → suppliers, nullable |
 | `subContractorId` | → sub_contractors, nullable |
-| `vendor` | *legacy* free text — display fallback for pre-migration rows |
+| `vendor` | Free-text payee name. For an **Other** expense (`isOtherPayee`) this IS the payee; otherwise a *legacy* display fallback for pre-migration rows, or the "paid to" label of the older "No supplier items" flow |
+| `isOtherPayee` | `boolean`, default `false`. `true` = vendor type **Other**: paid to someone who is neither a Supplier nor a Sub-Contractor (council fee, utility board, casual labour…), so both FKs are null and `vendor` holds the typed name. Added by `20261012000000_expense_other_payee`; existing rows stay `false` |
 | `method` | *legacy* single payment method — superseded by `expense_payments` |
 | `boq` | *legacy* single BSR-code reference, display-only, no longer settable |
 
-Exactly one of `supplierId` / `subContractorId` is set, decided by `category`
-(`SubContractor` → sub-contractor; everything else → supplier). Enforced in the API route, not the DB.
+Indexes: `projectId`, and `date` (Payments page date-range filter, added by `20261013000000_payments_filters`).
+
+Who was paid is one of three shapes, enforced in the API route, not the DB:
+- **Sub-Contractor** — `category = SubContractor`, `subContractorId` set.
+- **Supplier** — any other category, `supplierId` set (optional: an expense built only from catalog items
+  with no supplier may have none, and then `vendor` holds a free-text label).
+- **Other** — `isOtherPayee = true`, **both** FKs null, `vendor` = the required payee name. Other payees have
+  no id, so the Payments page's *Other payees* tab groups them by `vendor` (trimmed, case-insensitive).
+  The flag is what separates these from the older no-supplier rows above, which look identical otherwise.
 
 ### `expense_payments`
 `id` PK · `expenseId` → expenses · `amount` · `date` · `method` (`Cash`\|`Bank`\|`Online`) ·
