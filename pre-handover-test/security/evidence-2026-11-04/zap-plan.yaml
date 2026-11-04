@@ -1,0 +1,307 @@
+env:
+  contexts:
+    - name: vega
+      urls: ["http://host.docker.internal:3200"]
+      includePaths: ["http://host.docker.internal:3200.*"]
+      excludePaths:
+        - "http://host.docker.internal:3200/api/auth/logout.*"
+        - "http://host.docker.internal:3200/api/users/sanduni.*"
+        - "http://host.docker.internal:3200/_next/static/.*"
+  parameters:
+    failOnError: false
+    progressToStdout: true
+jobs:
+  - type: replacer
+    parameters:
+      deleteAllRules: true
+    rules:
+      - description: session
+        matchType: req_header
+        matchString: Cookie
+        replacementString: "vega_session=<redacted>"
+      - description: origin
+        matchType: req_header
+        matchString: Origin
+        replacementString: "http://host.docker.internal:3200"
+  - type: requestor
+    requests:
+      - url: "http://host.docker.internal:3200/"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/login"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/projects"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/projects/perf_p004"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/basic-price"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/basic-rate"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/payments"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/activities"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/suppliers"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/suppliers/perf_sup001"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/suppliers/compare"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/suppliers/compare/item?name=Cement&unit=Bag"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/sub-contractors/perf_sc001"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/users"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/users/perf.staff9%40vegahomes.lk"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/roles"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/settings"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/settings/company-profile"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/settings/field-options"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/settings/project-access"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/cost-plus"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/auth/me"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/dashboard"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/notifications"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/bsr"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/expenses?page=1&search=a"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/stages"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/items"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/members"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/variations"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/basic-price"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/basic-rate"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/basic-rate/next-code?cat=Labour"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/basic-rate/L-001/history"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/expenses/perf_p004_e001/payments"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1/payments"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/payments?page=1&pageSize=25&search=a&status=all&from=2026-01-01&to=2026-12-31"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/payments/filter-presets"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/payments/other-payees/history?payee=abc&from=2026-01-01"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/expenses/other-payees"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/expenses/next-invoice?projectId=perf_p004"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/basic-rate"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/basic-price"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/basic-rate/next-code?projectId=perf_p004&cat=Labour"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/suppliers"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/suppliers/perf_sup001"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/sub-contractors"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/sub-contractors/perf_sc001"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/suppliers/price-comparison"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/suppliers/price-comparison/item?name=Cement&unit=Bag"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/activities"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/categories"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/trades"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/units"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/company-profile"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/users"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/users/perf.staff9%40vegahomes.lk"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/users/perf.staff9%40vegahomes.lk/projects"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/roles"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/roles/perf_role_pm"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/permissions/catalog"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/cost-plus"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/healthz"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/ready"
+        method: "GET"
+      - url: "http://host.docker.internal:3200/api/auth/login"
+        method: "POST"
+        data: "{\"email\": \"zap.probe@vegahomes.lk\", \"password\": \"Wrong-Password-1!\", \"remember\": true}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/suppliers"
+        method: "POST"
+        data: "{\"name\": \"ZAP Supplier\", \"phone\": \"0771234567\", \"email\": \"zap@x.lk\", \"address\": \"Colombo\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/suppliers/perf_sup001"
+        method: "PATCH"
+        data: "{\"name\": \"Perf Supplier 001\", \"phone\": \"0771234567\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/sub-contractors"
+        method: "POST"
+        data: "{\"name\": \"ZAP Sub\", \"trade\": \"Masonry\", \"phone\": \"0771234567\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/activities"
+        method: "POST"
+        data: "{\"code\": \"ZAP1\", \"name\": \"ZAP activity\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/categories"
+        method: "POST"
+        data: "{\"label\": \"ZAP Cat\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/trades"
+        method: "POST"
+        data: "{\"name\": \"ZAP Trade\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/units"
+        method: "POST"
+        data: "{\"name\": \"zapunit\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/projects"
+        method: "POST"
+        data: "{\"name\": \"ZAP Project\", \"client\": \"ZAP Client\", \"location\": \"Colombo\", \"start\": \"2026-11-01\", \"stages\": 4, \"contract\": 1000000}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004"
+        method: "PATCH"
+        data: "{\"name\": \"Perf Residence 4\", \"client\": \"Client\", \"location\": \"Kandy\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/expenses"
+        method: "POST"
+        data: "{\"date\": \"2026-11-01\", \"vendor\": \"ZAP Vendor\", \"category\": \"Material\", \"amount\": 1000, \"description\": \"zap\", \"lineItems\": []}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/expenses/perf_p004_e001/payments"
+        method: "POST"
+        data: "{\"amount\": 1, \"date\": \"2026-11-01\", \"method\": \"Cash\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/bsr"
+        method: "POST"
+        data: "{\"itemId\": \"perf_p004_ai001\", \"qty\": 1, \"floor\": \"Ground\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/basic-price"
+        method: "POST"
+        data: "{\"activity\": \"ZAP1\", \"cat\": \"Material\", \"name\": \"ZAP draft\", \"unit\": \"Bag\", \"price\": 100}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/basic-rate"
+        method: "POST"
+        data: "{\"cat\": \"Material\", \"name\": \"ZAP rate\", \"unit\": \"Bag\", \"rate\": 100}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/variations"
+        method: "POST"
+        data: "{\"name\": \"ZAP variation\", \"description\": \"zap\", \"amount\": 1000, \"date\": \"2026-11-01\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/stages/perf_p004_s1"
+        method: "PATCH"
+        data: "{\"startDate\": \"2026-01-01\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1"
+        method: "PATCH"
+        data: "{\"dueDate\": \"2026-12-01\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/payments/filter-presets"
+        method: "POST"
+        data: "{\"name\": \"ZAP preset\", \"query\": \"search=a\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/users"
+        method: "POST"
+        data: "{\"email\": \"zap.user@vegahomes.lk\", \"name\": \"ZAP User\", \"password\": \"Zap-Long-Password-2026!\", \"role\": \"Staff\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/users/perf.staff9%40vegahomes.lk"
+        method: "PATCH"
+        data: "{\"name\": \"Perf Staff 9\"}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/roles"
+        method: "POST"
+        data: "{\"name\": \"ZAP Role\", \"permissions\": [{\"module\": \"projects\", \"action\": \"view\"}]}"
+        headers:
+          - "Content-Type: application/json"
+      - url: "http://host.docker.internal:3200/api/company-profile"
+        method: "PATCH"
+        data: "{\"name\": \"Vega Construction\", \"address\": \"Colombo\"}"
+        headers:
+          - "Content-Type: application/json"
+  - type: spider
+    parameters:
+      context: vega
+      url: "http://host.docker.internal:3200/"
+      maxDuration: 3
+  - type: spiderAjax
+    parameters:
+      context: vega
+      url: "http://host.docker.internal:3200/"
+      maxDuration: 6
+      browserId: firefox-headless
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 5
+  - type: activeScan
+    parameters:
+      context: vega
+      maxRuleDurationInMins: 3
+      maxScanDurationInMins: 60
+      threadPerHost: 4
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 5
+  - type: report
+    parameters:
+      template: traditional-html
+      reportDir: /zap/wrk
+      reportFile: zap-report.html
+  - type: report
+    parameters:
+      template: traditional-json
+      reportDir: /zap/wrk
+      reportFile: zap-report.json
