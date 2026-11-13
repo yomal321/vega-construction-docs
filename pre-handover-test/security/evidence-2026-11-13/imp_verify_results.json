@@ -1,0 +1,155 @@
+[
+ {
+  "id": "A",
+  "name": "no session -> 401",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 401,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not authenticated\"}"
+ },
+ {
+  "id": "A",
+  "name": "projects:view only -> 403",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: projects:create\"}"
+ },
+ {
+  "id": "A",
+  "name": "staff -> foreign project -> 403",
+  "method": "POST",
+  "path": "/api/projects/perf_p001/basic-rate/import",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "A",
+  "name": "own project URL + foreign item id: row refused, foreign rate unchanged",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "{\"created\":0,\"updated\":0,\"errors\":[{\"index\":0,\"message\":\"This item no longer exists in this project \u2014 it may have been d rate=15600.94"
+ },
+ {
+  "id": "E",
+  "name": "fixture: Staff with projects:view+create, no edit",
+  "method": "POST",
+  "path": "/api/users",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "{\"name\":\"Import create-only\",\"email\":\"imp.create.1794567919@vegahomes.lk\",\"role\""
+ },
+ {
+  "id": "E",
+  "name": "fixture: member of perf_p004",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/members",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "{\"ok\":true}"
+ },
+ {
+  "id": "E",
+  "name": "single-item rate edit without projects:edit -> 403 (baseline)",
+  "method": "PATCH",
+  "path": "/api/projects/perf_p004/basic-rate/L-001",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: projects:edit\"}"
+ },
+ {
+  "id": "E",
+  "name": "import with existing item id, without projects:edit: rate must not change",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 200,
+  "verdict": "FAIL",
+  "note": "status=200 {\"created\":0,\"updated\":1,\"errors\":[]} rate 22235.9 -> 1.23"
+ },
+ {
+  "id": "I",
+  "name": "19 hostile rows in one import: every row refused, nothing written",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "refused 19/19, created=0 updated=0, rows 34->34; not refused: []"
+ },
+ {
+  "id": "I",
+  "name": "rows missing -> refused, nothing written",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"No rows to import.\"}"
+ },
+ {
+  "id": "I",
+  "name": "rows empty -> refused, nothing written",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"No rows to import.\"}"
+ },
+ {
+  "id": "I",
+  "name": "rows not array -> refused, nothing written",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"No rows to import.\"}"
+ },
+ {
+  "id": "I",
+  "name": "5001 rows -> refused, nothing written",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Import at most 5000 rows at a time.\"}"
+ },
+ {
+  "id": "I",
+  "name": "row not object -> refused, nothing written",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Invalid input: expected record, received string\"}"
+ },
+ {
+  "id": "I",
+  "name": "one 200k-char description -> refused, nothing written",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "{\"created\":0,\"updated\":0,\"errors\":[{\"index\":0,\"message\":\"Description must be 120"
+ },
+ {
+  "id": "I",
+  "name": "formula-looking description stored as plain text",
+  "method": "POST",
+  "path": "/api/projects/perf_p004/basic-rate/import",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "=HYPERLINK(\"http://evil.example\",\"x\") 1794567919"
+ },
+ {
+  "id": "CL",
+  "name": "cleanup: delete create-only user",
+  "method": "DELETE",
+  "path": "/api/users/<imp.create>",
+  "status": 409,
+  "verdict": "PASS",
+  "note": "{\"error\":\"imp.create.1794567919@vegahomes.lk has 1 audit record (drafts added, r"
+ }
+]

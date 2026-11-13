@@ -1,0 +1,2 @@
+Counter({('S6', 'PASS'): 13, ('N5', 'PASS'): 11, ('S7', 'PASS'): 9, ('MF', 'PASS'): 7, ('N4', 'PASS'): 6, ('N3', 'PASS'): 3, ('N2', 'PASS'): 1, ('MF', 'FAIL'): 1})
+('MF', 'Staff + method=Cheque never shows foreign project', 'GET', '/api/payments?method=Cheque&project=perf_p001', 200, 'FAIL', '2063ms {"tab":"suppliers","rows":[],"page":1,"pageSize":50,"total":0,"totalPages":1,"counts":{"suppliers":0,"subContractors":0,"others":0,"unlinked')

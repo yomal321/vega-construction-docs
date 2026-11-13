@@ -1,0 +1,461 @@
+[
+ [
+  "S6",
+  "http Origin, no X-Forwarded-Proto (local http) -> allowed",
+  "POST",
+  "/api/suppliers",
+  200,
+  "PASS",
+  "2051ms {\"id\":\"sup_018288a5-6487-4de1-8f68-51bddb47a404\",\"name\":\"S6 check supplier 1794238645-1\"}"
+ ],
+ [
+  "S6",
+  "https Origin to http app (the 11-04 scheme swap) -> 403",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  "2011ms {\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "S6",
+  "https Origin + X-Forwarded-Proto: https (behind Traefik) -> allowed",
+  "POST",
+  "/api/suppliers",
+  200,
+  "PASS",
+  "2020ms {\"id\":\"sup_1d721ed1-f0b3-4eb8-b9ac-963ba677f0e7\",\"name\":\"S6 check supplier 1794238650-3\"}"
+ ],
+ [
+  "S6",
+  "http Origin to https app (http page on same host) -> 403",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  "2008ms {\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "S6",
+  "X-Forwarded-Proto: http + https Origin -> 403",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  "2011ms {\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "S6",
+  "foreign https Origin + X-Forwarded-Proto: https -> 403",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  "2010ms {\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "S6",
+  "prefix trick Origin + X-Forwarded-Proto: https -> 403",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  "2025ms {\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "S6",
+  "Origin: null + X-Forwarded-Proto: https -> 403",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  "2010ms {\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "S6",
+  "upper-case https Origin + XFP https (URL-normalised) -> allowed",
+  "POST",
+  "/api/suppliers",
+  200,
+  "PASS",
+  "2052ms {\"id\":\"sup_3a97c447-9c1c-416d-9c47-e6125d3b50d3\",\"name\":\"S6 check supplier 1794238662-9\"}"
+ ],
+ [
+  "S6",
+  "X-Forwarded-Proto list 'https,http' (proxy chain) + https Origin -> allowed",
+  "POST",
+  "/api/suppliers",
+  200,
+  "PASS",
+  "2030ms {\"id\":\"sup_f3222390-cdaf-41cd-b1e0-d03d207947eb\",\"name\":\"S6 check supplier 1794238664-10\"}"
+ ],
+ [
+  "S6",
+  "login with scheme-swapped Origin -> 403",
+  "POST",
+  "/api/auth/login",
+  403,
+  "PASS",
+  "2011ms {\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "S6",
+  "DELETE with scheme-swapped Origin -> 403",
+  "DELETE",
+  "/api/payments/filter-presets/nope",
+  403,
+  "PASS",
+  "2011ms {\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "S6",
+  "GET is not subject to the Origin check",
+  "GET",
+  "/api/suppliers",
+  200,
+  "PASS",
+  "2016ms [{\"id\":\"sup_6e87551f-5032-4e04-90ba-9a9da80e1c9f\",\"name\":\"<img src=x onerror=alert(1)>\"},{\"id\":\"sup_928f1369-6ec2-4a3e-92d7-462f1a275213\",\"n"
+ ],
+ [
+  "S7",
+  "no X-Powered-By on GET /login (anon)",
+  "GET",
+  "/login",
+  200,
+  "PASS",
+  "2019ms <!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\""
+ ],
+ [
+  "S7",
+  "no X-Powered-By on GET / (anon)",
+  "GET",
+  "/",
+  307,
+  "PASS",
+  "2018ms /login"
+ ],
+ [
+  "S7",
+  "no X-Powered-By on GET / (auth)",
+  "GET",
+  "/",
+  200,
+  "PASS",
+  "2025ms <!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\""
+ ],
+ [
+  "S7",
+  "no X-Powered-By on GET /payments (auth)",
+  "GET",
+  "/payments",
+  200,
+  "PASS",
+  "2027ms <!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\""
+ ],
+ [
+  "S7",
+  "no X-Powered-By on GET /api/auth/me (auth)",
+  "GET",
+  "/api/auth/me",
+  200,
+  "PASS",
+  "2029ms {\"user\":{\"name\":\"Sanduni Wijeratne\",\"email\":\"sanduni@vegahomes.lk\",\"role\":\"Admin\",\"permissions\":[\"dashboard:view\",\"projects:view\",\"projects:"
+ ],
+ [
+  "S7",
+  "no X-Powered-By on GET /api/auth/me (anon)",
+  "GET",
+  "/api/auth/me",
+  401,
+  "PASS",
+  "2011ms {\"error\":\"Not authenticated\"}"
+ ],
+ [
+  "S7",
+  "no X-Powered-By on GET /api/healthz (anon)",
+  "GET",
+  "/api/healthz",
+  200,
+  "PASS",
+  "2011ms {\"status\":\"ok\"}"
+ ],
+ [
+  "S7",
+  "no X-Powered-By on GET /no-such-page-zz (auth)",
+  "GET",
+  "/no-such-page-zz",
+  404,
+  "PASS",
+  "2023ms <!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\""
+ ],
+ [
+  "S7",
+  "no X-Powered-By on GET /favicon.ico (anon)",
+  "GET",
+  "/favicon.ico",
+  200,
+  "PASS",
+  "2012ms \u0000\u0000\u0001\u0000\u0003\u0000\u0010\u0010\u0000\u0000\u0001\u0000 \u0000\u001d\u0003\u0000\u00006\u0000\u0000\u0000  \u0000\u0000\u0001\u0000 \u0000\ufffd\b\u0000\u0000S\u0003\u0000\u000000\u0000\u0000\u0001\u0000 \u0000\u001b\u0011\u0000\u0000#\f\u0000\u0000\ufffdPNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0000\u0010\u0000\u0000\u0000\u0010\b\u0002\u0000\u0000\u0000\ufffd\ufffdh6\u0000\u0000\u0000\tpHYs\u0000\u0000.#\u0000\u0000.#\u0001x\ufffd?v\u0000\u0000\u0002\ufffdIDAT(\ufffd5\ufffd\ufffdO\ufffdQ\u0018\u01df\ufffd\ufffdHWk\ufffd\ufffd\u07a3\ufffd\b\"\"\ufffd\ufffd"
+ ],
+ [
+  "N2",
+  "favicon.ico served (200, image)",
+  "GET",
+  "/favicon.ico",
+  200,
+  "PASS",
+  "2010ms \u0000\u0000\u0001\u0000\u0003\u0000\u0010\u0010\u0000\u0000\u0001\u0000 \u0000\u001d\u0003\u0000\u00006\u0000\u0000\u0000  \u0000\u0000\u0001\u0000 \u0000\ufffd\b\u0000\u0000S\u0003\u0000\u000000\u0000\u0000\u0001\u0000 \u0000\u001b\u0011\u0000\u0000#\f\u0000\u0000\ufffdPNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0000\u0010\u0000\u0000\u0000\u0010\b\u0002\u0000\u0000\u0000\ufffd\ufffdh6\u0000\u0000\u0000\tpHYs\u0000\u0000.#\u0000\u0000.#\u0001x\ufffd?v\u0000\u0000\u0002\ufffdIDAT(\ufffd5\ufffd\ufffdO\ufffdQ\u0018\u01df\ufffd\ufffdHWk\ufffd\ufffd\u07a3\ufffd\b\"\"\ufffd\ufffd"
+ ],
+ [
+  "N3",
+  "PATCH unknown activity -> 404",
+  "PATCH",
+  "/api/activities/ZZZ-NOPE",
+  404,
+  "PASS",
+  "2034ms {\"error\":\"Activity not found\"}"
+ ],
+ [
+  "N3",
+  "PATCH existing activity 01 to its own name -> 200",
+  "PATCH",
+  "/api/activities/01",
+  200,
+  "PASS",
+  "2023ms {\"code\":\"01\",\"name\":\"Site Preparation & Excavation\"}"
+ ],
+ [
+  "N3",
+  "no ZZZ-NOPE row created",
+  "GET",
+  "/api/activities",
+  200,
+  "PASS",
+  "2011ms [{\"code\":\"01\",\"name\":\"Site Preparation & Excavation\"},{\"code\":\"02\",\"name\":\"Filling and Earth Work Support\"},{\"code\":\"03\",\"name\":\"Anti Termit"
+ ],
+ [
+  "N4",
+  "NUL in unknown email -> 401 generic",
+  "POST",
+  "/api/auth/login",
+  401,
+  "PASS",
+  "2073ms {\"error\":\"Invalid email or password\"}"
+ ],
+ [
+  "N4",
+  "NUL inside a REAL email + correct password -> 401, no session",
+  "POST",
+  "/api/auth/login",
+  401,
+  "PASS",
+  "2075ms {\"error\":\"Invalid email or password\"}"
+ ],
+ [
+  "N4",
+  "NUL at end of real email + correct password -> 401, no session",
+  "POST",
+  "/api/auth/login",
+  401,
+  "PASS",
+  "2078ms {\"error\":\"Invalid email or password\"}"
+ ],
+ [
+  "N4",
+  "NUL in password -> 401 generic",
+  "POST",
+  "/api/auth/login",
+  401,
+  "PASS",
+  "2073ms {\"error\":\"Invalid email or password\"}"
+ ],
+ [
+  "N4",
+  "only NUL bytes as email -> 401 generic",
+  "POST",
+  "/api/auth/login",
+  401,
+  "PASS",
+  "2076ms {\"error\":\"Invalid email or password\"}"
+ ],
+ [
+  "N4",
+  "same real user still logs in normally",
+  "POST",
+  "/api/auth/login",
+  200,
+  "PASS",
+  "2095ms {\"user\":{\"name\":\"Perf Staff 7\",\"email\":\"perf.staff7@vegahomes.lk\",\"role\":\"Staff\"}}"
+ ],
+ [
+  "N5",
+  "invoiced=0000-01-01 -> 400 'Enter a valid date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2028ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "N5",
+  "release=0000-01-01 -> 400 'Enter a valid date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "N5",
+  "invoiced=0001-01-01 -> 400 'Enter a valid date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "N5",
+  "release=0001-01-01 -> 400 'Enter a valid date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "N5",
+  "invoiced=1899-12-31 -> 400 'Enter a valid date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "N5",
+  "release=1899-12-31 -> 400 'Enter a valid date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2017ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "N5",
+  "invoiced=2101-01-01 -> 400 'Enter a valid date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2017ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "N5",
+  "release=2101-01-01 -> 400 'Enter a valid date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "N5",
+  "invoiced=9999-12-31 -> 400 'Enter a valid date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2011ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "N5",
+  "release=9999-12-31 -> 400 'Enter a valid date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2016ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "N5",
+  "boundaries 1900-01-01 .. 2100-12-31 accepted",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  200,
+  "PASS",
+  "2028ms {\"id\":\"expp_a264dcc9-0e73-423a-83e9-064848e3c205\",\"amount\":1,\"date\":\"01 Nov 2026\",\"method\":\"Cheque\",\"by\":\"Sanduni Wijeratne\",\"chequeInvoiced"
+ ],
+ [
+  "MF",
+  "method=Cheque accepted",
+  "GET",
+  "/api/payments?method=Cheque",
+  200,
+  "PASS",
+  "2091ms {\"tab\":\"suppliers\",\"rows\":[{\"key\":\"perf_sup008\",\"vendor\":\"Moratuwa Hardware 8\",\"owed\":2814892.75,\"paid\":1000,\"outstanding\":2813892.75,\"lastA"
+ ],
+ [
+  "MF",
+  "method=cheque -> 400",
+  "GET",
+  "/api/payments?method=cheque",
+  400,
+  "PASS",
+  "2024ms {\"error\":\"Unknown payment method\"}"
+ ],
+ [
+  "MF",
+  "method=Cheque'-- -> 400",
+  "GET",
+  "/api/payments?method=Cheque'--",
+  400,
+  "PASS",
+  "2017ms {\"error\":\"Unknown payment method\"}"
+ ],
+ [
+  "MF",
+  "method=Cheque%27%20or%201%3D1-- -> 400",
+  "GET",
+  "/api/payments?method=Cheque%27%20or%201%3D1--",
+  400,
+  "PASS",
+  "2011ms {\"error\":\"Unknown payment method\"}"
+ ],
+ [
+  "MF",
+  "method=Cheque%00 -> 400",
+  "GET",
+  "/api/payments?method=Cheque%00",
+  400,
+  "PASS",
+  "2017ms {\"error\":\"Unknown payment method\"}"
+ ],
+ [
+  "MF",
+  "method=Cash,Cheque -> 400",
+  "GET",
+  "/api/payments?method=Cash,Cheque",
+  400,
+  "PASS",
+  "2011ms {\"error\":\"Unknown payment method\"}"
+ ],
+ [
+  "MF",
+  "Staff + method=Cheque never shows foreign project",
+  "GET",
+  "/api/payments?method=Cheque&project=perf_p001",
+  200,
+  "FAIL",
+  "2049ms {\"tab\":\"suppliers\",\"rows\":[],\"page\":1,\"pageSize\":50,\"total\":0,\"totalPages\":1,\"counts\":{\"suppliers\":0,\"subContractors\":0,\"others\":0,\"unlinked"
+ ],
+ [
+  "MF",
+  "Staff + method=Cheque (all tabs) has no foreign project",
+  "GET",
+  "/api/payments?method=Cheque&tab=suppliers",
+  200,
+  "PASS",
+  "2054ms {\"tab\":\"suppliers\",\"rows\":[{\"key\":\"perf_sup008\",\"vendor\":\"Moratuwa Hardware 8\",\"owed\":2814892.75,\"paid\":1000,\"outstanding\":2813892.75,\"lastA"
+ ]
+]

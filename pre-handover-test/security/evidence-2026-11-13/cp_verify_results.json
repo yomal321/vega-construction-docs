@@ -1,0 +1,479 @@
+[
+ {
+  "id": "F",
+  "name": "fixtures: A (admin) and B (cp staff) each with expense, expense payment, client payment",
+  "method": "-",
+  "path": "-",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "A=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e B=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf"
+ },
+ {
+  "id": "V",
+  "name": "no costPlus permission -> 403",
+  "method": "GET",
+  "path": "/api/cost-plus",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: costPlus:view\"}"
+ },
+ {
+  "id": "V",
+  "name": "no costPlus permission -> 403",
+  "method": "GET",
+  "path": "/api/cost-plus?id=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: costPlus:view\"}"
+ },
+ {
+  "id": "V",
+  "name": "no costPlus permission -> 403",
+  "method": "POST",
+  "path": "/api/cost-plus",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: costPlus:create\"}"
+ },
+ {
+  "id": "V",
+  "name": "no costPlus permission -> 403",
+  "method": "GET",
+  "path": "/api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: costPlus:view\"}"
+ },
+ {
+  "id": "V",
+  "name": "no costPlus permission -> 403",
+  "method": "GET",
+  "path": "/api/cost-plus/expense-payments?expenseId=cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: costPlus:view\"}"
+ },
+ {
+  "id": "V",
+  "name": "no costPlus permission -> 403",
+  "method": "GET",
+  "path": "/api/cost-plus/client-payments?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: costPlus:view\"}"
+ },
+ {
+  "id": "V",
+  "name": "no costPlus permission -> 403",
+  "method": "DELETE",
+  "path": "/api/cost-plus?id=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: costPlus:delete\"}"
+ },
+ {
+  "id": "V",
+  "name": "no session -> 401",
+  "method": "GET",
+  "path": "/api/cost-plus",
+  "status": 401,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not authenticated\"}"
+ },
+ {
+  "id": "H",
+  "name": "portfolio list excludes A",
+  "method": "GET",
+  "path": "/api/cost-plus",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "{\"summary\":{\"count\":1,\"active\":1,\"expense\":10000,\"marginAmount\":1000,\"total\":11000,\"received\":0,\"chequePending\":500,\"outstanding\":10500,\"paidOut\":0},\"projects\":"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "GET",
+  "path": "/api/cost-plus?id=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "PATCH",
+  "path": "/api/cost-plus?id=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "DELETE",
+  "path": "/api/cost-plus?id=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "GET",
+  "path": "/api/cost-plus/expenses?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "POST",
+  "path": "/api/cost-plus/expenses?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "PATCH",
+  "path": "/api/cost-plus/expenses?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "DELETE",
+  "path": "/api/cost-plus/expenses?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "GET",
+  "path": "/api/cost-plus/expense-payments?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "POST",
+  "path": "/api/cost-plus/expense-payments?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "PATCH",
+  "path": "/api/cost-plus/expense-payments?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040&paymentId=cpep_4d9944dd-2951-4a4a-8ae8-8b88f6a4d4d4",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "DELETE",
+  "path": "/api/cost-plus/expense-payments?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040&paymentId=cpep_4d9944dd-2951-4a4a-8ae8-8b88f6a4d4d4",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "GET",
+  "path": "/api/cost-plus/client-payments?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "POST",
+  "path": "/api/cost-plus/client-payments?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "PATCH",
+  "path": "/api/cost-plus/client-payments?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e&paymentId=cpcp_9410fcac-1a8a-4f2b-8c75-be27e6eb32bb",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "H",
+  "name": "cp staff -> foreign project A",
+  "method": "DELETE",
+  "path": "/api/cost-plus/client-payments?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e&paymentId=cpcp_9410fcac-1a8a-4f2b-8c75-be27e6eb32bb",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "X",
+  "name": "own parent + foreign child",
+  "method": "PATCH",
+  "path": "/api/cost-plus/expense-payments?expenseId=cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed&paymentId=cpep_4d9944dd-2951-4a4a-8ae8-8b88f6a4d4d4",
+  "status": 404,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not found\"}"
+ },
+ {
+  "id": "X",
+  "name": "own parent + foreign child",
+  "method": "DELETE",
+  "path": "/api/cost-plus/expense-payments?expenseId=cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed&paymentId=cpep_4d9944dd-2951-4a4a-8ae8-8b88f6a4d4d4",
+  "status": 404,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not found\"}"
+ },
+ {
+  "id": "X",
+  "name": "own parent + foreign child",
+  "method": "PATCH",
+  "path": "/api/cost-plus/client-payments?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf&paymentId=cpcp_9410fcac-1a8a-4f2b-8c75-be27e6eb32bb",
+  "status": 404,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not found\"}"
+ },
+ {
+  "id": "X",
+  "name": "own parent + foreign child",
+  "method": "DELETE",
+  "path": "/api/cost-plus/client-payments?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf&paymentId=cpcp_9410fcac-1a8a-4f2b-8c75-be27e6eb32bb",
+  "status": 404,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not found\"}"
+ },
+ {
+  "id": "X",
+  "name": "own parent + foreign child",
+  "method": "DELETE",
+  "path": "/api/cost-plus/expenses?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040&projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "X",
+  "name": "own parent + foreign child",
+  "method": "GET",
+  "path": "/api/cost-plus?id=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e&projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not your record\"}"
+ },
+ {
+  "id": "X",
+  "name": "A's project, expense and both payments unchanged in DB",
+  "method": "-",
+  "path": "-",
+  "status": 0,
+  "verdict": "PASS",
+  "note": "1,1,received,received"
+ },
+ {
+  "id": "M",
+  "name": "create: smuggled id/ownerId/marginAmount ignored",
+  "method": "POST",
+  "path": "/api/cost-plus",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "cpp_afdb76bd-a965-4047-bb0a-1f41a94cfe86,u_df38bbba-d4f0-4a0f-b545-ac6ee9b320dc,0"
+ },
+ {
+  "id": "M",
+  "name": "patch: smuggled ownerId ignored",
+  "method": "PATCH",
+  "path": "/api/cost-plus?id=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "owner=u_df38bbba-d4f0-4a0f-b545-ac6ee9b320dc"
+ },
+ {
+  "id": "M",
+  "name": "payment: smuggled recordedById/expenseId ignored",
+  "method": "POST",
+  "path": "/api/cost-plus/expense-payments",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "u_df38bbba-d4f0-4a0f-b545-ac6ee9b320dc,cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed"
+ },
+ {
+  "id": "I",
+  "name": "negative margin",
+  "method": "POST",
+  "path": "/api/cost-plus",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Margin cannot be negative\"}"
+ },
+ {
+  "id": "I",
+  "name": "huge margin",
+  "method": "POST",
+  "path": "/api/cost-plus",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Margin must be 1000% or less\"}"
+ },
+ {
+  "id": "I",
+  "name": "impossible date",
+  "method": "POST",
+  "path": "/api/cost-plus",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Enter a valid date\"}"
+ },
+ {
+  "id": "I",
+  "name": "200k name",
+  "method": "POST",
+  "path": "/api/cost-plus",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Name must be 120 characters or fewer\"}"
+ },
+ {
+  "id": "I",
+  "name": "unknown status",
+  "method": "PATCH",
+  "path": "/api/cost-plus?id=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Invalid project status\"}"
+ },
+ {
+  "id": "I",
+  "name": "amount over cap",
+  "method": "POST",
+  "path": "/api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Amount must be 100,000,000,000 or less\"}"
+ },
+ {
+  "id": "I",
+  "name": "negative amount",
+  "method": "POST",
+  "path": "/api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Amount must be greater than zero\"}"
+ },
+ {
+  "id": "I",
+  "name": "bad supplier id",
+  "method": "POST",
+  "path": "/api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"That supplier no longer exists.\"}"
+ },
+ {
+  "id": "I",
+  "name": "unknown category",
+  "method": "POST",
+  "path": "/api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Invalid category\"}"
+ },
+ {
+  "id": "I",
+  "name": "overpay expense",
+  "method": "POST",
+  "path": "/api/cost-plus/expense-payments?expenseId=cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"This payment would overpay the expense \u2014 it exceeds the outstanding balance.\"}"
+ },
+ {
+  "id": "I",
+  "name": "unknown method",
+  "method": "POST",
+  "path": "/api/cost-plus/expense-payments?expenseId=cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Payment method is required\"}"
+ },
+ {
+  "id": "I",
+  "name": "client pays over project total",
+  "method": "POST",
+  "path": "/api/cost-plus/client-payments?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"This payment would exceed the project total \u2014 it is more than the outstanding balance.\"}"
+ },
+ {
+  "id": "I",
+  "name": "unknown cheque status",
+  "method": "PATCH",
+  "path": "/api/cost-plus/client-payments?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf&paymentId=cpcp_6c9b6be5-e04a-4d8a-bdad-5e84bc17bbb9",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Invalid cheque status\"}"
+ },
+ {
+  "id": "I",
+  "name": "malformed JSON",
+  "method": "POST",
+  "path": "/api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Invalid request body\"}"
+ },
+ {
+  "id": "I",
+  "name": "missing projectId param -> 400",
+  "method": "GET",
+  "path": "/api/cost-plus/expenses",
+  "status": 400,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing query parameter: projectId\"}"
+ },
+ {
+  "id": "I",
+  "name": "unknown project id -> 404",
+  "method": "GET",
+  "path": "/api/cost-plus/expenses?projectId=cp_nope",
+  "status": 404,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Project not found\"}"
+ },
+ {
+  "id": "I",
+  "name": "id=' or 1=1-- -> 404, no rows",
+  "method": "GET",
+  "path": "/api/cost-plus",
+  "status": 404,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Project not found\"}"
+ },
+ {
+  "id": "CL",
+  "name": "cleanup: delete cp staff user",
+  "method": "DELETE",
+  "path": "/api/users/<cp.staff>",
+  "status": 409,
+  "verdict": "PASS",
+  "note": "{\"error\":\"This record refers to something that no longer exists, or is still in use elsewhere.\"}"
+ }
+]

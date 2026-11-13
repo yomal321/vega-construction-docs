@@ -1,0 +1,38 @@
+[
+ {
+  "body_mb": 1,
+  "status": 400,
+  "seconds": 2.06,
+  "rss_before_mb": 215,
+  "rss_after_mb": 218,
+  "healthz_after": 200,
+  "body": "{\"error\":\"Name must be 120 characters or fewer\"}"
+ },
+ {
+  "body_mb": 10,
+  "status": 400,
+  "seconds": 2.05,
+  "rss_before_mb": 218,
+  "rss_after_mb": 182,
+  "healthz_after": 200,
+  "body": "{\"error\":\"Invalid request body\"}"
+ },
+ {
+  "body_mb": 50,
+  "status": 400,
+  "seconds": 2.09,
+  "rss_before_mb": 182,
+  "rss_after_mb": 170,
+  "healthz_after": 200,
+  "body": "{\"error\":\"Invalid request body\"}"
+ },
+ {
+  "body_mb": 100,
+  "status": 400,
+  "seconds": 2.13,
+  "rss_before_mb": 169,
+  "rss_after_mb": 180,
+  "healthz_after": 200,
+  "body": "{\"error\":\"Invalid request body\"}"
+ }
+]

@@ -1,0 +1,55 @@
+F | fixtures: A (admin) and B (cp staff) each with expense, expense payment, client payment | - | - | 200 | PASS | A=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e B=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf
+V | no costPlus permission -> 403 | GET | /api/cost-plus | 403 | PASS | {"error":"Missing permission: costPlus:view"}
+V | no costPlus permission -> 403 | GET | /api/cost-plus?id=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 403 | PASS | {"error":"Missing permission: costPlus:view"}
+V | no costPlus permission -> 403 | POST | /api/cost-plus | 403 | PASS | {"error":"Missing permission: costPlus:create"}
+V | no costPlus permission -> 403 | GET | /api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 403 | PASS | {"error":"Missing permission: costPlus:view"}
+V | no costPlus permission -> 403 | GET | /api/cost-plus/expense-payments?expenseId=cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed | 403 | PASS | {"error":"Missing permission: costPlus:view"}
+V | no costPlus permission -> 403 | GET | /api/cost-plus/client-payments?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 403 | PASS | {"error":"Missing permission: costPlus:view"}
+V | no costPlus permission -> 403 | DELETE | /api/cost-plus?id=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 403 | PASS | {"error":"Missing permission: costPlus:delete"}
+V | no session -> 401 | GET | /api/cost-plus | 401 | PASS | {"error":"Not authenticated"}
+H | portfolio list excludes A | GET | /api/cost-plus | 200 | PASS | {"summary":{"count":1,"active":1,"expense":10000,"marginAmount":1000,"total":11000,"received":0,"chequePending":500,"outstanding":10500,"paidOut":0},"projects":
+H | cp staff -> foreign project A | GET | /api/cost-plus?id=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | PATCH | /api/cost-plus?id=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | DELETE | /api/cost-plus?id=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | GET | /api/cost-plus/expenses?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | POST | /api/cost-plus/expenses?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | PATCH | /api/cost-plus/expenses?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040 | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | DELETE | /api/cost-plus/expenses?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040 | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | GET | /api/cost-plus/expense-payments?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040 | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | POST | /api/cost-plus/expense-payments?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040 | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | PATCH | /api/cost-plus/expense-payments?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040&paymentId=cpep_4d9944dd-2951-4a4a-8ae8-8b88f6a4d4d4 | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | DELETE | /api/cost-plus/expense-payments?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040&paymentId=cpep_4d9944dd-2951-4a4a-8ae8-8b88f6a4d4d4 | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | GET | /api/cost-plus/client-payments?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | POST | /api/cost-plus/client-payments?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | PATCH | /api/cost-plus/client-payments?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e&paymentId=cpcp_9410fcac-1a8a-4f2b-8c75-be27e6eb32bb | 403 | PASS | {"error":"Not your record"}
+H | cp staff -> foreign project A | DELETE | /api/cost-plus/client-payments?projectId=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e&paymentId=cpcp_9410fcac-1a8a-4f2b-8c75-be27e6eb32bb | 403 | PASS | {"error":"Not your record"}
+X | own parent + foreign child | PATCH | /api/cost-plus/expense-payments?expenseId=cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed&paymentId=cpep_4d9944dd-2951-4a4a-8ae8-8b88f6a4d4d4 | 404 | PASS | {"error":"Not found"}
+X | own parent + foreign child | DELETE | /api/cost-plus/expense-payments?expenseId=cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed&paymentId=cpep_4d9944dd-2951-4a4a-8ae8-8b88f6a4d4d4 | 404 | PASS | {"error":"Not found"}
+X | own parent + foreign child | PATCH | /api/cost-plus/client-payments?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf&paymentId=cpcp_9410fcac-1a8a-4f2b-8c75-be27e6eb32bb | 404 | PASS | {"error":"Not found"}
+X | own parent + foreign child | DELETE | /api/cost-plus/client-payments?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf&paymentId=cpcp_9410fcac-1a8a-4f2b-8c75-be27e6eb32bb | 404 | PASS | {"error":"Not found"}
+X | own parent + foreign child | DELETE | /api/cost-plus/expenses?expenseId=cpe_6a528e4e-1f1b-47a8-9e2f-bc4a3af90040&projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 403 | PASS | {"error":"Not your record"}
+X | own parent + foreign child | GET | /api/cost-plus?id=cpp_05eeaa39-91aa-49f7-9aea-2a97aad3c45e&projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 403 | PASS | {"error":"Not your record"}
+X | A's project, expense and both payments unchanged in DB | - | - | 0 | PASS | 1,1,received,received
+M | create: smuggled id/ownerId/marginAmount ignored | POST | /api/cost-plus | 200 | PASS | cpp_afdb76bd-a965-4047-bb0a-1f41a94cfe86,u_df38bbba-d4f0-4a0f-b545-ac6ee9b320dc,0
+M | patch: smuggled ownerId ignored | PATCH | /api/cost-plus?id=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 200 | PASS | owner=u_df38bbba-d4f0-4a0f-b545-ac6ee9b320dc
+M | payment: smuggled recordedById/expenseId ignored | POST | /api/cost-plus/expense-payments | 200 | PASS | u_df38bbba-d4f0-4a0f-b545-ac6ee9b320dc,cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed
+I | negative margin | POST | /api/cost-plus | 400 | PASS | {"error":"Margin cannot be negative"}
+I | huge margin | POST | /api/cost-plus | 400 | PASS | {"error":"Margin must be 1000% or less"}
+I | impossible date | POST | /api/cost-plus | 400 | PASS | {"error":"Enter a valid date"}
+I | 200k name | POST | /api/cost-plus | 400 | PASS | {"error":"Name must be 120 characters or fewer"}
+I | unknown status | PATCH | /api/cost-plus?id=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 400 | PASS | {"error":"Invalid project status"}
+I | amount over cap | POST | /api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 400 | PASS | {"error":"Amount must be 100,000,000,000 or less"}
+I | negative amount | POST | /api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 400 | PASS | {"error":"Amount must be greater than zero"}
+I | bad supplier id | POST | /api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 400 | PASS | {"error":"That supplier no longer exists."}
+I | unknown category | POST | /api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 400 | PASS | {"error":"Invalid category"}
+I | overpay expense | POST | /api/cost-plus/expense-payments?expenseId=cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed | 400 | PASS | {"error":"This payment would overpay the expense — it exceeds the outstanding balance."}
+I | unknown method | POST | /api/cost-plus/expense-payments?expenseId=cpe_07e6de3d-d815-4440-9dcf-39774f8cfeed | 400 | PASS | {"error":"Payment method is required"}
+I | client pays over project total | POST | /api/cost-plus/client-payments?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 400 | PASS | {"error":"This payment would exceed the project total — it is more than the outstanding balance."}
+I | unknown cheque status | PATCH | /api/cost-plus/client-payments?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf&paymentId=cpcp_6c9b6be5-e04a-4d8a-bdad-5e84bc17bbb9 | 400 | PASS | {"error":"Invalid cheque status"}
+I | malformed JSON | POST | /api/cost-plus/expenses?projectId=cpp_e586a11f-ba50-4f53-a375-a74ac84b33cf | 400 | PASS | {"error":"Invalid request body"}
+I | missing projectId param -> 400 | GET | /api/cost-plus/expenses | 400 | PASS | {"error":"Missing query parameter: projectId"}
+I | unknown project id -> 404 | GET | /api/cost-plus/expenses?projectId=cp_nope | 404 | PASS | {"error":"Project not found"}
+I | id=' or 1=1-- -> 404, no rows | GET | /api/cost-plus | 404 | PASS | {"error":"Project not found"}
+CL | cleanup: delete cp staff user | DELETE | /api/users/<cp.staff> | 409 | PASS | {"error":"This record refers to something that no longer exists, or is still in use elsewhere."}
+
+TOTAL 53  PASS 53  FAIL 0

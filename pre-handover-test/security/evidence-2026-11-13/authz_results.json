@@ -1,0 +1,2468 @@
+[
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/activities",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/activities",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "PATCH",
+  "/api/activities/X",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "DELETE",
+  "/api/activities/X",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/auth/me",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/auth/logout",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/basic-price",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/basic-price",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "PATCH",
+  "/api/basic-price/bp1",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "DELETE",
+  "/api/basic-price/bp1",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/basic-price/bp1/promote",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/basic-rate",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/basic-rate",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "PATCH",
+  "/api/basic-rate/cmw0l32ua000pudlwgmlfmaab",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "DELETE",
+  "/api/basic-rate/cmw0l32ua000pudlwgmlfmaab",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/basic-rate/cmw0l32ua000pudlwgmlfmaab/history",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/basic-rate/next-code?projectId=p1&cat=Labour",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/categories",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/categories",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "PATCH",
+  "/api/categories/X",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "DELETE",
+  "/api/categories/X",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/company-profile",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "PATCH",
+  "/api/company-profile",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/cost-plus",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/cost-plus",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "PATCH",
+  "/api/cost-plus",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "DELETE",
+  "/api/cost-plus",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/cost-plus/expenses",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/cost-plus/client-payments",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/cost-plus/expense-payments",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/dashboard",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/expenses/next-invoice",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/expenses/other-payees",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/notifications",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/payments",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/payments/filter-presets",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/payments/filter-presets",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "PATCH",
+  "/api/payments/filter-presets/nonexistent-preset",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "DELETE",
+  "/api/payments/filter-presets/nonexistent-preset",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/payments/other-payees/history",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/permissions/catalog",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/projects",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/projects",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/projects/p1",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "PATCH",
+  "/api/projects/p1",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "DELETE",
+  "/api/projects/p1",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/projects/p1/bsr",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/projects/p1/expenses",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/projects/p1/stages",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/projects/p1/members",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "PATCH",
+  "/api/projects/p1/owner",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/roles",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/roles",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/roles/perf_role_pm",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/sub-contractors",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/suppliers",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/suppliers/perf_sup001",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/suppliers/price-comparison",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/trades",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/units",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/users",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "POST",
+  "/api/users",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "GET",
+  "/api/users/nimal%40vegahomes.lk",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "no cookie",
+  "PATCH",
+  "/api/users/nimal%40vegahomes.lk",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "page redirect",
+  "GET",
+  "/",
+  307,
+  "PASS",
+  "/login"
+ ],
+ [
+  "A unauth",
+  "page redirect",
+  "GET",
+  "/projects",
+  307,
+  "PASS",
+  "/login"
+ ],
+ [
+  "A unauth",
+  "page redirect",
+  "GET",
+  "/users",
+  307,
+  "PASS",
+  "/login"
+ ],
+ [
+  "A unauth",
+  "page redirect",
+  "GET",
+  "/payments",
+  307,
+  "PASS",
+  "/login"
+ ],
+ [
+  "A unauth",
+  "page redirect",
+  "GET",
+  "/settings",
+  307,
+  "PASS",
+  "/login"
+ ],
+ [
+  "A unauth",
+  "forged token: garbage",
+  "GET",
+  "/api/auth/me",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "forged token: alg none",
+  "GET",
+  "/api/auth/me",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "A unauth",
+  "forged token: tampered sig",
+  "GET",
+  "/api/auth/me",
+  401,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/projects/p1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/basic-price",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/basic-price",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/basic-price/bp1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/projects/p1/basic-price/bp1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/basic-price/bp1/promote",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/basic-rate",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/basic-rate",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/basic-rate/L-003",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/projects/p1/basic-rate/L-003",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/basic-rate/L-003/history",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/basic-rate/clone",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/basic-rate/import",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/basic-rate/next-code?cat=Labour",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/bsr",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/bsr",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/bsr/cmw0l335i009fudlwoxx4fncv",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/projects/p1/bsr/cmw0l335i009fudlwoxx4fncv",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/expenses",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/expenses",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/expenses/cmw0l3368009yudlwy3q1vt8z",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/projects/p1/expenses/cmw0l3368009yudlwy3q1vt8z",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/expenses/cmw0l3368009yudlwy3q1vt8z/payments",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/expenses/cmw0l3368009yudlwy3q1vt8z/payments",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/items",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/items",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/items/cmw0l32w20025udlwvgz032ax",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/items/cmw0l32w20025udlwvgz032ax/recipe/cmw0l32wn002nudlwn5v97x7q",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/members",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/members",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/projects/p1/members/perf_u001",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/owner",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/stages",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/stages/cmw0l330z005xudlwlqpr3hru",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/stages/cmw0l330z005xudlwlqpr3hru/milestones/cmw0l3313005zudlwu7qzg24d",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/stages/cmw0l330z005xudlwlqpr3hru/milestones/cmw0l3313005zudlwu7qzg24d/payments",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/stages/cmw0l330z005xudlwlqpr3hru/milestones/cmw0l3313005zudlwu7qzg24d/payments",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/stages/cmw0l330z005xudlwlqpr3hru/milestones/cmw0l3313005zudlwu7qzg24d/payments/cmw0l33170061udlwstkwf37m",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/projects/p1/stages/cmw0l330z005xudlwlqpr3hru/milestones/cmw0l3313005zudlwu7qzg24d/payments/cmw0l33170061udlwstkwf37m",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/variations",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/variations",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/projects/p1/variations/nonexistent-var",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/projects/p1/variations/nonexistent-var",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/projects/p1/variations/nonexistent-var/payments",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/projects/p1/variations/nonexistent-var/payments",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/basic-price/bp1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/basic-price/bp1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "POST",
+  "/api/basic-price/bp1/promote",
+  400,
+  "REVIEW",
+  "{\"error\":\"Code is required\"}"
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "PATCH",
+  "/api/basic-rate/cmw0l32ua000pudlwgmlfmaab",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/basic-rate/cmw0l32ua000pudlwgmlfmaab",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/basic-rate/cmw0l32ua000pudlwgmlfmaab/history",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "GET",
+  "/api/basic-rate/next-code?projectId=p1&cat=Labour",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "B IDOR foreign project",
+  "staff -> p1",
+  "DELETE",
+  "/api/projects/perf_p001/expenses/perf_p001_e001/payments/perf_p001_e001_pay1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/basic-price/bp1",
+  404,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "DELETE",
+  "/api/projects/perf_p004/basic-price/bp1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "POST",
+  "/api/projects/perf_p004/basic-price/bp1/promote",
+  400,
+  "REVIEW",
+  "{\"error\":\"Code is required\"}"
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/basic-rate/L-003",
+  200,
+  "FAIL",
+  "{\"code\":\"L-003\",\"name\":\"Electrician #14\",\"unit\":\"Bag\",\"rate\":1,\"supplierId\":null}"
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/bsr/cmw0l335i009fudlwoxx4fncv",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "DELETE",
+  "/api/projects/perf_p004/bsr/cmw0l335i009fudlwoxx4fncv",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/expenses/cmw0l3368009yudlwy3q1vt8z",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "DELETE",
+  "/api/projects/perf_p004/expenses/cmw0l3368009yudlwy3q1vt8z",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "GET",
+  "/api/projects/perf_p004/expenses/cmw0l3368009yudlwy3q1vt8z/payments",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "POST",
+  "/api/projects/perf_p004/expenses/cmw0l3368009yudlwy3q1vt8z/payments",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "DELETE",
+  "/api/projects/perf_p004/expenses/perf_p001_e001/payments/perf_p001_e001_pay1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "DELETE",
+  "/api/projects/perf_p004/expenses/perf_p004_e001/payments/perf_p001_e001_pay1",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/items/cmw0l32w20025udlwvgz032ax",
+  400,
+  "REVIEW",
+  "{\"error\":\"Unit is required\"}"
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/items/cmw0l32w20025udlwvgz032ax/recipe/cmw0l32wn002nudlwn5v97x7q",
+  404,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/items/perf_p004_ai001/recipe/cmw0l32wn002nudlwn5v97x7q",
+  404,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/stages/cmw0l330z005xudlwlqpr3hru",
+  404,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1/milestones/cmw0l3313005zudlwu7qzg24d",
+  404,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/stages/cmw0l330z005xudlwlqpr3hru/milestones/cmw0l3313005zudlwu7qzg24d",
+  404,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1/payments/cmw0l33170061udlwstkwf37m",
+  400,
+  "REVIEW",
+  "{\"error\":\"Invalid cheque status\"}"
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "DELETE",
+  "/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1/payments/cmw0l33170061udlwstkwf37m",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "PATCH",
+  "/api/projects/perf_p004/variations/nonexistent-var",
+  404,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "DELETE",
+  "/api/projects/perf_p004/variations/nonexistent-var",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "GET",
+  "/api/projects/perf_p004/variations/nonexistent-var/payments",
+  404,
+  "PASS",
+  ""
+ ],
+ [
+  "C cross-parent IDOR",
+  "own URL + foreign child",
+  "POST",
+  "/api/projects/perf_p004/basic-rate/clone",
+  400,
+  "REVIEW",
+  "{\"error\":\"Invalid input: expected array, received undefined\"}"
+ ],
+ [
+  "D list leakage",
+  "staff list has no foreign ids",
+  "GET",
+  "/api/projects",
+  200,
+  "PASS",
+  "3307 bytes"
+ ],
+ [
+  "D list leakage",
+  "staff list has no foreign ids",
+  "GET",
+  "/api/dashboard",
+  200,
+  "PASS",
+  "2125 bytes"
+ ],
+ [
+  "D list leakage",
+  "staff list has no foreign ids",
+  "GET",
+  "/api/payments",
+  200,
+  "PASS",
+  "131778 bytes"
+ ],
+ [
+  "D list leakage",
+  "staff list has no foreign ids",
+  "GET",
+  "/api/basic-rate",
+  200,
+  "PASS",
+  "74052 bytes"
+ ],
+ [
+  "D list leakage",
+  "staff list has no foreign ids",
+  "GET",
+  "/api/basic-price",
+  200,
+  "PASS",
+  "124993 bytes"
+ ],
+ [
+  "D list leakage",
+  "staff list has no foreign ids",
+  "GET",
+  "/api/notifications",
+  200,
+  "PASS",
+  "4782 bytes"
+ ],
+ [
+  "D list leakage",
+  "staff list has no foreign ids",
+  "GET",
+  "/api/expenses/other-payees",
+  200,
+  "PASS",
+  "2 bytes"
+ ],
+ [
+  "D list leakage",
+  "staff list has no foreign ids",
+  "GET",
+  "/api/payments/other-payees/history",
+  400,
+  "FAIL",
+  "35 bytes"
+ ],
+ [
+  "D list leakage",
+  "staff list has no foreign ids",
+  "GET",
+  "/api/suppliers/price-comparison",
+  200,
+  "PASS",
+  "62924 bytes"
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "GET",
+  "/api/users",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "POST",
+  "/api/users",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "GET",
+  "/api/users/nimal%40vegahomes.lk",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "PATCH",
+  "/api/users/perf.staff1%40vegahomes.lk",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/users/sanduni%40vegahomes.lk",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "GET",
+  "/api/users/perf.staff1%40vegahomes.lk/projects",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "POST",
+  "/api/users/perf.staff1%40vegahomes.lk/projects",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/users/perf.staff2%40vegahomes.lk/projects/perf_p004",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "GET",
+  "/api/roles",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "POST",
+  "/api/roles",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "PATCH",
+  "/api/roles/perf_role_pm",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/roles/perf_role_pm",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "GET",
+  "/api/permissions/catalog",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "PATCH",
+  "/api/company-profile",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "PATCH",
+  "/api/categories/Material",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/categories/Material",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/trades/X",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/units/X",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "PATCH",
+  "/api/projects/perf_p004/owner",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "POST",
+  "/api/projects/perf_p004/members",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/projects/perf_p004/members/perf_u002",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/projects/perf_p004",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "PATCH",
+  "/api/activities/X",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/activities/X",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/suppliers/perf_sup001",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "GET",
+  "/api/cost-plus",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "PATCH",
+  "/api/payments/filter-presets/nonexistent-preset",
+  404,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "staff -> admin-only/ungranted",
+  "DELETE",
+  "/api/payments/filter-presets/nonexistent-preset",
+  404,
+  "PASS",
+  ""
+ ],
+ [
+  "E vertical privilege",
+  "mass-assign ownerId on own project",
+  "PATCH",
+  "/api/projects/perf_p004",
+  200,
+  "PASS",
+  "owner before=Perf Staff 18 after=Perf Staff 18"
+ ],
+ [
+  "E vertical privilege",
+  "me has no password hash",
+  "GET",
+  "/api/auth/me",
+  200,
+  "PASS",
+  "{\"user\":{\"name\":\"Perf Staff 1\",\"email\":\"perf.staff1@vegahomes.lk\",\"role\":\"Staff\",\"permissions\":[\"suppliers:edit\",\"projects:create\",\"suppliers:view\",\"projects:vi"
+ ],
+ [
+  "E vertical privilege",
+  "admin user list has no hash",
+  "GET",
+  "/api/users",
+  200,
+  "PASS",
+  "5564 bytes"
+ ],
+ [
+  "F CSRF",
+  "no Origin",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "F CSRF",
+  "evil Origin",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "F CSRF",
+  "null Origin",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "F CSRF",
+  "prefix trick",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "F CSRF",
+  "scheme swap",
+  "POST",
+  "/api/suppliers",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "F CSRF",
+  "login CSRF (evil Origin)",
+  "POST",
+  "/api/auth/login",
+  403,
+  "PASS",
+  "{\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "F CSRF",
+  "cross-origin GET returns no CORS allow",
+  "GET",
+  "/api/users",
+  200,
+  "PASS",
+  "none"
+ ],
+ [
+  "G session",
+  "cookie flags",
+  "POST",
+  "/api/auth/login",
+  "-",
+  "FAIL",
+  "vega_session=<redacted>; Path=/; Secure; HttpOnly; SameSite=lax"
+ ],
+ [
+  "G session",
+  "Secure flag (expected absent on plain-http localhost only)",
+  "POST",
+  "/api/auth/login",
+  "-",
+  "PASS",
+  "Secure present"
+ ],
+ [
+  "G session",
+  "logout revokes token server-side",
+  "POST",
+  "/api/auth/logout",
+  "200/200/401",
+  "PASS",
+  ""
+ ],
+ [
+  "G session",
+  "deactivation kills live session",
+  "PATCH",
+  "/api/users/perf.staff3%40vegahomes.lk",
+  "200/200/401",
+  "PASS",
+  ""
+ ],
+ [
+  "G session",
+  "inactive user cannot log in",
+  "POST",
+  "/api/auth/login",
+  403,
+  "PASS",
+  ""
+ ],
+ [
+  "G session",
+  "login issues fresh token (no fixation)",
+  "POST",
+  "/api/auth/login",
+  200,
+  "PASS",
+  ""
+ ],
+ [
+  "H login",
+  "same response for real vs unknown email",
+  "POST",
+  "/api/auth/login",
+  "-",
+  "PASS",
+  "real=[(401, '{\"error\":\"Invalid email or password\"}')] fake=[(401, '{\"error\":\"Invalid email or password\"}')]"
+ ],
+ [
+  "H login",
+  "timing parity real vs unknown email",
+  "POST",
+  "/api/auth/login",
+  "-",
+  "PASS",
+  "median real=2106ms fake=2114ms"
+ ],
+ [
+  "H login",
+  "brute force throttled within 15 attempts",
+  "POST",
+  "/api/auth/login",
+  "401,401,401,401,401,429,429,429,429,429,429,429,429,429,429",
+  "PASS",
+  "first 429 at attempt 6"
+ ],
+ [
+  "H login",
+  "correct password still blocked while throttled",
+  "POST",
+  "/api/auth/login",
+  429,
+  "PASS",
+  "{\"error\":\"Too many attempts. Try again in a few minutes.\"}"
+ ],
+ [
+  "H login",
+  "SQLi in login: ' or 1=1--",
+  "POST",
+  "/api/auth/login",
+  401,
+  "PASS",
+  "{\"error\":\"Invalid email or password\"}"
+ ],
+ [
+  "H login",
+  "SQLi in login: nimal@vegahomes.lk' ",
+  "POST",
+  "/api/auth/login",
+  401,
+  "PASS",
+  "{\"error\":\"Invalid email or password\"}"
+ ],
+ [
+  "H login",
+  "SQLi in login: \" or \"\"=\"",
+  "POST",
+  "/api/auth/login",
+  401,
+  "PASS",
+  "{\"error\":\"Invalid email or password\"}"
+ ],
+ [
+  "H login",
+  "SQLi in login: admin'/*",
+  "POST",
+  "/api/auth/login",
+  401,
+  "PASS",
+  "{\"error\":\"Invalid email or password\"}"
+ ],
+ [
+  "H login",
+  "SQLi in login: {'$ne': None}",
+  "POST",
+  "/api/auth/login",
+  400,
+  "PASS",
+  "{\"error\":\"Email and password are required\"}"
+ ],
+ [
+  "I injection",
+  "SQLi qs '",
+  "GET",
+  "/api/payments?search=%27",
+  200,
+  "PASS",
+  "2201ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs ' or '1'='1",
+  "GET",
+  "/api/payments?search=%27%20or%20%271%27%3D%271",
+  200,
+  "PASS",
+  "2167ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs 1;select pg_sl",
+  "GET",
+  "/api/payments?search=1%3Bselect%20pg_sleep%285%29--",
+  200,
+  "PASS",
+  "2140ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs \") or 1=1--",
+  "GET",
+  "/api/payments?search=%22%29%20or%201%3D1--",
+  200,
+  "PASS",
+  "2137ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs %' union selec",
+  "GET",
+  "/api/payments?search=%25%27%20union%20select%20null--",
+  200,
+  "PASS",
+  "2177ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs '",
+  "GET",
+  "/api/payments?vendor=%27",
+  200,
+  "PASS",
+  "2130ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs ' or '1'='1",
+  "GET",
+  "/api/payments?vendor=%27%20or%20%271%27%3D%271",
+  200,
+  "PASS",
+  "2172ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs 1;select pg_sl",
+  "GET",
+  "/api/payments?vendor=1%3Bselect%20pg_sleep%285%29--",
+  200,
+  "PASS",
+  "2137ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs \") or 1=1--",
+  "GET",
+  "/api/payments?vendor=%22%29%20or%201%3D1--",
+  200,
+  "PASS",
+  "2121ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs %' union selec",
+  "GET",
+  "/api/payments?vendor=%25%27%20union%20select%20null--",
+  200,
+  "PASS",
+  "2137ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs '",
+  "GET",
+  "/api/payments?projectId=%27",
+  200,
+  "PASS",
+  "2148ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs ' or '1'='1",
+  "GET",
+  "/api/payments?projectId=%27%20or%20%271%27%3D%271",
+  200,
+  "PASS",
+  "2144ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs 1;select pg_sl",
+  "GET",
+  "/api/payments?projectId=1%3Bselect%20pg_sleep%285%29--",
+  200,
+  "PASS",
+  "2132ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs \") or 1=1--",
+  "GET",
+  "/api/payments?projectId=%22%29%20or%201%3D1--",
+  200,
+  "PASS",
+  "2133ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs %' union selec",
+  "GET",
+  "/api/payments?projectId=%25%27%20union%20select%20null--",
+  200,
+  "PASS",
+  "2151ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs '",
+  "GET",
+  "/api/payments?from=%27",
+  400,
+  "PASS",
+  "2061ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs ' or '1'='1",
+  "GET",
+  "/api/payments?from=%27%20or%20%271%27%3D%271",
+  400,
+  "PASS",
+  "2034ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs 1;select pg_sl",
+  "GET",
+  "/api/payments?from=1%3Bselect%20pg_sleep%285%29--",
+  400,
+  "PASS",
+  "2055ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs \") or 1=1--",
+  "GET",
+  "/api/payments?from=%22%29%20or%201%3D1--",
+  400,
+  "PASS",
+  "2030ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs %' union selec",
+  "GET",
+  "/api/payments?from=%25%27%20union%20select%20null--",
+  400,
+  "PASS",
+  "2044ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs '",
+  "GET",
+  "/api/suppliers/price-comparison/item?name=%27",
+  400,
+  "PASS",
+  "2013ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs ' or '1'='1",
+  "GET",
+  "/api/suppliers/price-comparison/item?name=%27%20or%20%271%27%3D%271",
+  400,
+  "PASS",
+  "2045ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs 1;select pg_sl",
+  "GET",
+  "/api/suppliers/price-comparison/item?name=1%3Bselect%20pg_sleep%285%29--",
+  400,
+  "PASS",
+  "2034ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs \") or 1=1--",
+  "GET",
+  "/api/suppliers/price-comparison/item?name=%22%29%20or%201%3D1--",
+  400,
+  "PASS",
+  "2035ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs %' union selec",
+  "GET",
+  "/api/suppliers/price-comparison/item?name=%25%27%20union%20select%20null--",
+  400,
+  "PASS",
+  "2034ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs '",
+  "GET",
+  "/api/basic-rate/next-code?projectId=perf_p004&cat=%27",
+  200,
+  "PASS",
+  "2049ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs ' or '1'='1",
+  "GET",
+  "/api/basic-rate/next-code?projectId=perf_p004&cat=%27%20or%20%271%27%3D%271",
+  200,
+  "PASS",
+  "2058ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs 1;select pg_sl",
+  "GET",
+  "/api/basic-rate/next-code?projectId=perf_p004&cat=1%3Bselect%20pg_sleep%285%29--",
+  200,
+  "PASS",
+  "2062ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs \") or 1=1--",
+  "GET",
+  "/api/basic-rate/next-code?projectId=perf_p004&cat=%22%29%20or%201%3D1--",
+  200,
+  "PASS",
+  "2063ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs %' union selec",
+  "GET",
+  "/api/basic-rate/next-code?projectId=perf_p004&cat=%25%27%20union%20select%20null--",
+  200,
+  "PASS",
+  "2062ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs '",
+  "GET",
+  "/api/expenses/next-invoice?projectId=%27",
+  400,
+  "PASS",
+  "2040ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs ' or '1'='1",
+  "GET",
+  "/api/expenses/next-invoice?projectId=%27%20or%20%271%27%3D%271",
+  400,
+  "PASS",
+  "2051ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs 1;select pg_sl",
+  "GET",
+  "/api/expenses/next-invoice?projectId=1%3Bselect%20pg_sleep%285%29--",
+  400,
+  "PASS",
+  "2048ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs \") or 1=1--",
+  "GET",
+  "/api/expenses/next-invoice?projectId=%22%29%20or%201%3D1--",
+  400,
+  "PASS",
+  "2066ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs %' union selec",
+  "GET",
+  "/api/expenses/next-invoice?projectId=%25%27%20union%20select%20null--",
+  400,
+  "PASS",
+  "2069ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs '",
+  "GET",
+  "/api/payments/other-payees/history?vendor=%27",
+  400,
+  "PASS",
+  "2057ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs ' or '1'='1",
+  "GET",
+  "/api/payments/other-payees/history?vendor=%27%20or%20%271%27%3D%271",
+  400,
+  "PASS",
+  "2031ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs 1;select pg_sl",
+  "GET",
+  "/api/payments/other-payees/history?vendor=1%3Bselect%20pg_sleep%285%29--",
+  400,
+  "PASS",
+  "2050ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs \") or 1=1--",
+  "GET",
+  "/api/payments/other-payees/history?vendor=%22%29%20or%201%3D1--",
+  400,
+  "PASS",
+  "2063ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs %' union selec",
+  "GET",
+  "/api/payments/other-payees/history?vendor=%25%27%20union%20select%20null--",
+  400,
+  "PASS",
+  "2037ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs '",
+  "GET",
+  "/api/notifications?since=%27",
+  200,
+  "PASS",
+  "2046ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs ' or '1'='1",
+  "GET",
+  "/api/notifications?since=%27%20or%20%271%27%3D%271",
+  200,
+  "PASS",
+  "2060ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs 1;select pg_sl",
+  "GET",
+  "/api/notifications?since=1%3Bselect%20pg_sleep%285%29--",
+  200,
+  "PASS",
+  "2049ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs \") or 1=1--",
+  "GET",
+  "/api/notifications?since=%22%29%20or%201%3D1--",
+  200,
+  "PASS",
+  "2054ms "
+ ],
+ [
+  "I injection",
+  "SQLi qs %' union selec",
+  "GET",
+  "/api/notifications?since=%25%27%20union%20select%20null--",
+  200,
+  "PASS",
+  "2029ms "
+ ],
+ [
+  "I injection",
+  "SQLi in supplier name",
+  "POST",
+  "/api/suppliers",
+  200,
+  "REVIEW",
+  "stored verbatim; JSON API, React escapes on render - check PDF/XLSX export"
+ ],
+ [
+  "I injection",
+  "XSS in supplier name",
+  "POST",
+  "/api/suppliers",
+  200,
+  "REVIEW",
+  "stored verbatim; JSON API, React escapes on render - check PDF/XLSX export"
+ ],
+ [
+  "I injection",
+  "malformed JSON -> 4xx no stack",
+  "POST",
+  "/api/suppliers",
+  400,
+  "PASS",
+  "{\"error\":\"Invalid request body\"}"
+ ],
+ [
+  "I injection",
+  "oversized field rejected",
+  "POST",
+  "/api/suppliers",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "I injection",
+  "15MB body handled (no 500/hang)",
+  "POST",
+  "/api/suppliers",
+  400,
+  "PASS",
+  "{\"error\":\"Invalid request body\"}"
+ ],
+ [
+  "I injection",
+  "path traversal in id",
+  "GET",
+  "/api/projects/../../etc/passwd",
+  404,
+  "PASS",
+  "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=dev"
+ ],
+ [
+  "I injection",
+  "negative contract rejected",
+  "PATCH",
+  "/api/projects/perf_p004",
+  400,
+  "PASS",
+  "{\"error\":\"Contract value cannot be negative\"}"
+ ],
+ [
+  "I injection",
+  "negative payment rejected",
+  "POST",
+  "expense payment",
+  400,
+  "PASS",
+  "{\"error\":\"Amount must be greater than zero\"}"
+ ],
+ [
+  "I injection",
+  "overpayment rejected",
+  "POST",
+  "expense payment",
+  400,
+  "PASS",
+  "{\"error\":\"This payment would overpay the expense \u2014 it exceeds the outstanding balance.\"}"
+ ],
+ [
+  "J headers",
+  "security headers present",
+  "GET",
+  "/login",
+  200,
+  "PASS",
+  "default-src 'self'; script-src 'self' 'nonce-NJ7WeeBB1SfPzslzlertJQ=='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:"
+ ],
+ [
+  "J headers",
+  "no X-Powered-By / server version leak",
+  "GET",
+  "/login",
+  200,
+  "PASS",
+  " "
+ ],
+ [
+  "J headers",
+  "HSTS (expected only behind https)",
+  "GET",
+  "/login",
+  200,
+  "PASS",
+  "max-age=63072000; includeSubDomains; preload"
+ ],
+ [
+  "J headers",
+  "security headers present",
+  "GET",
+  "/api/auth/me",
+  200,
+  "PASS",
+  "default-src 'self'; script-src 'self' 'nonce-GtQugJoko6+n4J0YCsgInA=='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:"
+ ],
+ [
+  "J headers",
+  "no X-Powered-By / server version leak",
+  "GET",
+  "/api/auth/me",
+  200,
+  "PASS",
+  " "
+ ],
+ [
+  "J headers",
+  "HSTS (expected only behind https)",
+  "GET",
+  "/api/auth/me",
+  200,
+  "PASS",
+  "max-age=63072000; includeSubDomains; preload"
+ ]
+]

@@ -1,0 +1,686 @@
+[
+ [
+  "C1",
+  "admin cheque on own-project expense",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e130/payments",
+  200,
+  "PASS",
+  "2055ms {\"id\":\"expp_c1618d90-4e1d-443c-b72a-0c0afaae5943\",\"amount\":1000,\"date\":\"01 Nov 2026\",\"method\":\"Cheque\",\"by\":\"Sanduni Wijeratne\",\"chequeInvoicedDate\":\""
+ ],
+ [
+  "C1",
+  "admin cheque on foreign-project expense",
+  "POST",
+  "/api/projects/perf_p001/expenses/perf_p001_e022/payments",
+  200,
+  "PASS",
+  "2024ms {\"id\":\"expp_03809977-35a8-494b-a9d1-f2e5ecb25d56\",\"amount\":2000,\"date\":\"01 Nov 2026\",\"method\":\"Cheque\",\"by\":\"Sanduni Wijeratne\",\"chequeInvoicedDate\":\""
+ ],
+ [
+  "C2",
+  "cheques: no cookie -> 401",
+  "GET",
+  "/api/payments/cheques",
+  401,
+  "PASS",
+  "2052ms {\"error\":\"Not authenticated\"}"
+ ],
+ [
+  "C2",
+  "cheques: forged cookie -> 401",
+  "GET",
+  "/api/payments/cheques",
+  401,
+  "PASS",
+  "2029ms {\"error\":\"Not authenticated\"}"
+ ],
+ [
+  "C2",
+  "cheques: Staff without payments:view -> 403",
+  "GET",
+  "/api/payments/cheques",
+  403,
+  "PASS",
+  "2035ms {\"error\":\"Missing permission: payments:view\"}"
+ ],
+ [
+  "C2",
+  "cheques: POST not allowed",
+  "POST",
+  "/api/payments/cheques",
+  405,
+  "PASS",
+  "2013ms "
+ ],
+ [
+  "C2",
+  "cheques: Admin sees both fixtures",
+  "GET",
+  "/api/payments/cheques",
+  200,
+  "PASS",
+  "2046ms [{\"paymentId\":\"expp_03809977-35a8-494b-a9d1-f2e5ecb25d56\",\"projectName\":\"Perf Residence 1 \u2014 Homagama\",\"payee\":\"Helper Contractors 10\",\"payeeType\":\"Sub"
+ ],
+ [
+  "C2",
+  "cheques: Staff sees own cheque, not foreign",
+  "GET",
+  "/api/payments/cheques",
+  200,
+  "PASS",
+  "2029ms [{\"paymentId\":\"expp_c1618d90-4e1d-443c-b72a-0c0afaae5943\",\"projectName\":\"Perf Residence 4 \u2014 Galle\",\"payee\":\"Moratuwa Hardware 8\",\"payeeType\":\"Supplier"
+ ],
+ [
+  "C2",
+  "cheques: every Staff row is in a project Staff can open",
+  "GET",
+  "/api/payments/cheques",
+  200,
+  "PASS",
+  "1 rows, stray projects: []"
+ ],
+ [
+  "C2",
+  "cheques: ?project=foreign query is ignored, still scoped",
+  "GET",
+  "/api/payments/cheques?project=perf_p001&projectId=perf_p001",
+  200,
+  "PASS",
+  "2042ms [{\"paymentId\":\"expp_c1618d90-4e1d-443c-b72a-0c0afaae5943\",\"projectName\":\"Perf Residence 4 \u2014 Galle\",\"payee\":\"Moratuwa Hardware 8\",\"payeeType\":\"Supplier"
+ ],
+ [
+  "C2",
+  "cheques: no password hash or user ids leak",
+  "GET",
+  "/api/payments/cheques",
+  200,
+  "PASS",
+  "2022ms [{\"paymentId\":\"expp_03809977-35a8-494b-a9d1-f2e5ecb25d56\",\"projectName\":\"Perf Residence 1 \u2014 Homagama\",\"payee\":\"Helper Contractors 10\",\"payeeType\":\"Sub"
+ ],
+ [
+  "C3",
+  "Staff: cheque on foreign expense via foreign URL",
+  "POST",
+  "/api/projects/perf_p001/expenses/perf_p001_e022/payments",
+  403,
+  "PASS",
+  "2025ms {\"error\":\"Not your record\"}"
+ ],
+ [
+  "C3",
+  "Staff: cheque on foreign expense via own URL",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p001_e022/payments",
+  403,
+  "PASS",
+  "2019ms {\"error\":\"Not your record\"}"
+ ],
+ [
+  "C3",
+  "Staff: read foreign expense's payments (cheque dates)",
+  "GET",
+  "/api/projects/perf_p001/expenses/perf_p001_e022/payments",
+  403,
+  "PASS",
+  "2037ms {\"error\":\"Not your record\"}"
+ ],
+ [
+  "C3",
+  "Staff without projects:edit cannot record cheque",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  403,
+  "PASS",
+  "2024ms {\"error\":\"Missing permission: projects:edit\"}"
+ ],
+ [
+  "C3",
+  "CSRF: cheque with foreign Origin",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  403,
+  "PASS",
+  "2033ms {\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "C3",
+  "CSRF: cheque with no Origin",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  403,
+  "PASS",
+  "2010ms {\"error\":\"Cross-origin request rejected\"}"
+ ],
+ [
+  "C3",
+  "Staff: cheque on own expense works",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  200,
+  "PASS",
+  "2034ms {\"id\":\"expp_22af9887-a812-4690-9903-6da21c47940f\",\"amount\":1,\"date\":\"01 Nov 2026\",\"method\":\"Cheque\",\"by\":\"Perf Staff 1\",\"chequeInvoicedDate\":\"2026-11-"
+ ],
+ [
+  "C4",
+  "Cheque with no dates",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2020ms {\"error\":\"Cheque Invoiced Date is required\"}"
+ ],
+ [
+  "C4",
+  "Cheque with only invoiced date",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Cheque Release Date is required\"}"
+ ],
+ [
+  "C4",
+  "Cheque with only release date",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2023ms {\"error\":\"Cheque Invoiced Date is required\"}"
+ ],
+ [
+  "C4",
+  "release earlier than invoiced",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2017ms {\"error\":\"Cheque Release Date cannot be earlier than Cheque Invoiced Date\"}"
+ ],
+ [
+  "C4",
+  "method 'cheque' (lower case)",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2049ms {\"error\":\"Choose a valid payment method\"}"
+ ],
+ [
+  "C4",
+  "invoiced='2026-02-30'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2025ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='2026-02-30'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2053ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='2026-1-5'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2029ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='2026-1-5'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='2026-01-05T00:00:00Z'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2019ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='2026-01-05T00:00:00Z'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2023ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='2026-01-05 10:00'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2017ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='2026-01-05 10:00'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2011ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='05/01/2026'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='05/01/2026'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2024ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='not-a-date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2030ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='not-a-date'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2025ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced=\"'\"",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2026ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release=\"'\"",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2017ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced=\"2026-01-05'; select pg_slee",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2023ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release=\"2026-01-05'; select pg_slee",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='2026-01-05\\x00'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2019ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='2026-01-05\\x00'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2024ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='AAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2027ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='AAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2031ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='0000-01-01'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2028ms {\"error\":\"One of the values entered is not valid.\"}"
+ ],
+ [
+  "C4",
+  "release='0000-01-01'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2206ms {\"error\":\"Cheque Release Date cannot be earlier than Cheque Invoiced Date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='99999-01-01'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2022ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='99999-01-01'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='+002026-01-05'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2024ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='+002026-01-05'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2016ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced='2026-W01-1'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2012ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release='2026-W01-1'",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2018ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced=20260105",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2025ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release=20260105",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2017ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced=['2026-01-05']",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2038ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release=['2026-01-05']",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2019ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced={'$gt': ''}",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2024ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release={'$gt': ''}",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2032ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced=True",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2033ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release=True",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2019ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "invoiced=None",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2029ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "release=None",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2017ms {\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "C4",
+  "malformed JSON body",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2034ms {\"error\":\"Invalid request body\"}"
+ ],
+ [
+  "C4",
+  "cheque overpaying the expense",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2123ms {\"error\":\"This payment would overpay the expense \u2014 it exceeds the outstanding balance.\"}"
+ ],
+ [
+  "C4",
+  "cheque negative amount",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  400,
+  "PASS",
+  "2052ms {\"error\":\"Amount must be greater than zero\"}"
+ ],
+ [
+  "C5",
+  "same-day cheque accepted",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  200,
+  "PASS",
+  "2037ms {\"id\":\"expp_b69be8be-7cdd-40bb-9f7d-c2ebb76d9f0a\",\"amount\":1,\"date\":\"01 Nov 2026\",\"method\":\"Cheque\",\"by\":\"Sanduni Wijeratne\",\"chequeInvoicedDate\":\"202"
+ ],
+ [
+  "C5",
+  "post-dated cheque accepted",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  200,
+  "PASS",
+  "2029ms {\"id\":\"expp_928c3388-25f0-4703-acd7-109206d63e09\",\"amount\":1,\"date\":\"01 Nov 2026\",\"method\":\"Cheque\",\"by\":\"Sanduni Wijeratne\",\"chequeInvoicedDate\":\"202"
+ ],
+ [
+  "C5",
+  "Cash with cheque dates -> dates dropped",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  200,
+  "PASS",
+  "2029ms {\"id\":\"expp_c9f82a4a-6d3d-4989-a10e-6766513d6d1d\",\"amount\":1,\"date\":\"01 Nov 2026\",\"method\":\"Cash\",\"by\":\"Sanduni Wijeratne\",\"chequeInvoicedDate\":null,\""
+ ],
+ [
+  "C5",
+  "mass assignment: id/recordedById/expenseId smuggled",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e061/payments",
+  200,
+  "PASS",
+  "2027ms {\"id\":\"expp_caf0fd0b-704e-4301-9ae1-e16093203047\",\"amount\":1,\"date\":\"01 Nov 2026\",\"method\":\"Cheque\",\"by\":\"Sanduni Wijeratne\",\"chequeInvoicedDate\":\"202"
+ ],
+ [
+  "C5",
+  "DB: same-day row",
+  "SQL",
+  "expp_b69be8be-7cdd-40bb-9f7d-c2ebb76d9f0a",
+  0,
+  "PASS",
+  "Cheque|2026-11-06|2026-11-06|u2|perf_p004_e061"
+ ],
+ [
+  "C5",
+  "DB: Cash row has null cheque dates",
+  "SQL",
+  "expp_c9f82a4a-6d3d-4989-a10e-6766513d6d1d",
+  0,
+  "PASS",
+  "Cash|||u2|perf_p004_e061"
+ ],
+ [
+  "C5",
+  "DB: smuggled fields ignored",
+  "SQL",
+  "expp_caf0fd0b-704e-4301-9ae1-e16093203047",
+  0,
+  "PASS",
+  "id=expp_caf0fd0b-704e-4301-9ae1-e16093203047 Cheque|2026-11-01|2026-11-02|u2|perf_p004_e061"
+ ],
+ [
+  "C5",
+  "DB: no expp_attacker row",
+  "SQL",
+  "expp_attacker",
+  0,
+  "PASS",
+  ""
+ ],
+ [
+  "C5",
+  "DB: both CHECK constraints present",
+  "SQL",
+  "pg_constraint",
+  0,
+  "PASS",
+  "expense_payments_cheque_dates_only_for_cheque,expense_payments_cheque_release_after_invoiced"
+ ],
+ [
+  "C5",
+  "DB: CHECK blocks cheque dates on a Cash row (direct SQL)",
+  "SQL",
+  "insert",
+  0,
+  "PASS",
+  "rejected"
+ ],
+ [
+  "C6",
+  "supplier with HTML + formula name",
+  "POST",
+  "/api/suppliers",
+  200,
+  "PASS",
+  "2021ms {\"id\":\"sup_15d92c3f-3ebd-4195-ae6e-558e131042e2\",\"name\":\"<img src=x onerror=alert(1)>=HYPERLINK(\\\"http://evil.example\\\",\\\"x\\\")\"}"
+ ],
+ [
+  "C6",
+  "payload comes back as inert JSON string",
+  "GET",
+  "/api/payments/cheques",
+  200,
+  "PASS",
+  "2022ms [{\"paymentId\":\"expp_03809977-35a8-494b-a9d1-f2e5ecb25d56\",\"projectName\":\"Perf Residence 1 \u2014 Homagama\",\"payee\":\"Helper Contractors 10\",\"payeeType\":\"Sub"
+ ]
+]

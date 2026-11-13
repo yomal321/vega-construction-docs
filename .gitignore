@@ -1,0 +1,2 @@
+# E2E test evidence (screenshots, API dumps, traces): kept on disk, not in git.
+pre-handover-test/e2e/evidence-*/

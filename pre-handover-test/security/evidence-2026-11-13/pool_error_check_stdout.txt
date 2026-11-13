@@ -1,0 +1,38 @@
+server pid 33008 alive before: 1
+app connections (idle) before terminate:
+4
+4
+server pid alive after: 1
+healthz after: 200
+ready after:   200
+--- server log lines added:
+error: terminating connection due to administrator command
+    at ignore-listed frames {
+  length: 116,
+  severity: 'FATAL',
+  code: '57P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'postgres.c',
+  line: '3286',
+  routine: 'ProcessInterrupts',
+  client: Client {
+    _events: [Object: null prototype] { error: [Function (anonymous)] },
+    _eventsCount: 1,
+    _maxListeners: undefined,
+    connectionParameters: ConnectionParameters {
+      user: 'vega',
+      database: 'vega_sec5',
+      port: 55432,
+      host: 'localhost',
+      binary: false,
+      options: undefined,

@@ -1,0 +1,52 @@
+Semgrep failed to set the safe.directory Git config option. Git commands might fail: Command failed with exit code: 128
+-----
+Command failed with output:
+fatal: not a git repository: /src/C:/Users/HP/VegaConstruction-ManagementSystem/.git/worktrees/vega-sectest5
+
+
+Failed to run 'git config --global --add safe.directory *'. Possible reasons:
+
+- the git binary is not available
+- the current working directory is not a git repository
+- the baseline commit is not a parent of the current commit
+    (if you are running through semgrep-app, check if you are setting `SEMGREP_BRANCH` or `SEMGREP_BASELINE_COMMIT` properly)
+- the current working directory is not marked as safe
+    (fix with `git config --global --add safe.directory $(pwd)`)
+
+Try running the command yourself to debug the issue.
+               
+               
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 305 files tracked by git with 598 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      40     305          Community     598                                                                
+  ts               74     191                                                                                           
+  yaml             24      31                                                                                           
+  js               68       4                                                                                           
+  json              3       4                                                                                           
+  bash              1       3                                                                                           
+  dockerfile        4       1                                                                                           
+  html              1       1                                                                                           
+                                                                                                                        
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 2 (2 blocking)
+ • Rules run: 147
+ • Targets scanned: 305
+ • Parsed lines: ~99.9%
+ • Scan skipped: 
+   ◦ Matching --exclude patterns: 2
+   ◦ Files larger than  files 1.0 MB: 1
+   ◦ Files matching .semgrepignore patterns: 14
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 147 rules on 305 files: 2 findings.
+
+A new version of Semgrep is available. See https://semgrep.dev/docs/upgrading

@@ -1,0 +1,3 @@
+Counter({('S3', 'PASS'): 36, ('S4', 'PASS'): 20, ('S3', 'FAIL'): 1, ('S4', 'FAIL'): 1})
+('S3', 'PATCH unknown activity code', 'PATCH', '/api/activities/ZZZ-NOPE', 200, 'FAIL', '{"code":"ZZZ-NOPE","name":"x"}')
+('S4', 'login 100k email/password', 'POST', '/api/auth/login', 401, 'FAIL', '{"error":"Invalid email or password"}')

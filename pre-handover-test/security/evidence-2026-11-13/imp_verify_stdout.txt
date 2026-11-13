@@ -1,0 +1,19 @@
+A | no session -> 401 | POST | /api/projects/perf_p004/basic-rate/import | 401 | PASS | {"error":"Not authenticated"}
+A | projects:view only -> 403 | POST | /api/projects/perf_p004/basic-rate/import | 403 | PASS | {"error":"Missing permission: projects:create"}
+A | staff -> foreign project -> 403 | POST | /api/projects/perf_p001/basic-rate/import | 403 | PASS | {"error":"Not your record"}
+A | own project URL + foreign item id: row refused, foreign rate unchanged | POST | /api/projects/perf_p004/basic-rate/import | 200 | PASS | {"created":0,"updated":0,"errors":[{"index":0,"message":"This item no longer exists in this project — it may have been d rate=15600.94
+E | fixture: Staff with projects:view+create, no edit | POST | /api/users | 200 | PASS | {"name":"Import create-only","email":"imp.create.1794567919@vegahomes.lk","role"
+E | fixture: member of perf_p004 | POST | /api/projects/perf_p004/members | 200 | PASS | {"ok":true}
+E | single-item rate edit without projects:edit -> 403 (baseline) | PATCH | /api/projects/perf_p004/basic-rate/L-001 | 403 | PASS | {"error":"Missing permission: projects:edit"}
+E | import with existing item id, without projects:edit: rate must not change | POST | /api/projects/perf_p004/basic-rate/import | 200 | FAIL | status=200 {"created":0,"updated":1,"errors":[]} rate 22235.9 -> 1.23
+I | 19 hostile rows in one import: every row refused, nothing written | POST | /api/projects/perf_p004/basic-rate/import | 200 | PASS | refused 19/19, created=0 updated=0, rows 34->34; not refused: []
+I | rows missing -> refused, nothing written | POST | /api/projects/perf_p004/basic-rate/import | 400 | PASS | {"error":"No rows to import."}
+I | rows empty -> refused, nothing written | POST | /api/projects/perf_p004/basic-rate/import | 400 | PASS | {"error":"No rows to import."}
+I | rows not array -> refused, nothing written | POST | /api/projects/perf_p004/basic-rate/import | 400 | PASS | {"error":"No rows to import."}
+I | 5001 rows -> refused, nothing written | POST | /api/projects/perf_p004/basic-rate/import | 400 | PASS | {"error":"Import at most 5000 rows at a time."}
+I | row not object -> refused, nothing written | POST | /api/projects/perf_p004/basic-rate/import | 400 | PASS | {"error":"Invalid input: expected record, received string"}
+I | one 200k-char description -> refused, nothing written | POST | /api/projects/perf_p004/basic-rate/import | 200 | PASS | {"created":0,"updated":0,"errors":[{"index":0,"message":"Description must be 120
+I | formula-looking description stored as plain text | POST | /api/projects/perf_p004/basic-rate/import | 200 | PASS | =HYPERLINK("http://evil.example","x") 1794567919
+CL | cleanup: delete create-only user | DELETE | /api/users/<imp.create> | 409 | PASS | {"error":"imp.create.1794567919@vegahomes.lk has 1 audit record (drafts added, r
+
+TOTAL 17  PASS 16  FAIL 1

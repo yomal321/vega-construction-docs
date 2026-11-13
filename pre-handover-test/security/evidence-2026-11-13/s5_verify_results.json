@@ -1,0 +1,758 @@
+[
+ {
+  "id": "P1",
+  "name": "no cookie -> 401",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 401,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not authenticated\"}"
+ },
+ {
+  "id": "P1",
+  "name": "forged alg:none cookie -> 401",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 401,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not authenticated\"}"
+ },
+ {
+  "id": "P1",
+  "name": "x-middleware-subrequest bypass header, no cookie -> 401",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 401,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not authenticated\"}"
+ },
+ {
+  "id": "P1",
+  "name": "x-middleware-subrequest (proxy path), no cookie -> 401",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 401,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not authenticated\"}"
+ },
+ {
+  "id": "P1",
+  "name": "staff without priceComparison:view -> 403 (list)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: priceComparison:view\"}"
+ },
+ {
+  "id": "P1",
+  "name": "staff without priceComparison:view -> 403 (item)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 403,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Missing permission: priceComparison:view\"}"
+ },
+ {
+  "id": "P1",
+  "name": "POST on list -> 405",
+  "method": "POST",
+  "path": "/api/suppliers/price-comparison",
+  "status": 405,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P2",
+  "name": "admin sees every base_item (1114)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "1114 rows"
+ },
+ {
+  "id": "P2",
+  "name": "admin sees every project with items (34)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "34 projects"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff10@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff10@vegahomes.lk: row count = DB (34)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "34 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff10@vegahomes.lk: null-supplier rows = DB (30)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff11@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff11@vegahomes.lk: row count = DB (175)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "175 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff11@vegahomes.lk: null-supplier rows = DB (128)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff13@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff13@vegahomes.lk: row count = DB (104)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "104 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff13@vegahomes.lk: null-supplier rows = DB (78)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff14@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff14@vegahomes.lk: row count = DB (214)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "214 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff14@vegahomes.lk: null-supplier rows = DB (161)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff16@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff16@vegahomes.lk: row count = DB (181)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "181 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff16@vegahomes.lk: null-supplier rows = DB (131)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff17@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff17@vegahomes.lk: row count = DB (253)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "253 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff17@vegahomes.lk: null-supplier rows = DB (187)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff19@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff19@vegahomes.lk: row count = DB (105)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "105 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff19@vegahomes.lk: null-supplier rows = DB (72)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff1@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff1@vegahomes.lk: row count = DB (245)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "245 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff1@vegahomes.lk: null-supplier rows = DB (177)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff2@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff2@vegahomes.lk: row count = DB (179)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "179 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff2@vegahomes.lk: null-supplier rows = DB (133)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff4@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff4@vegahomes.lk: row count = DB (296)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "296 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff4@vegahomes.lk: null-supplier rows = DB (225)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff5@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff5@vegahomes.lk: row count = DB (329)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "329 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff5@vegahomes.lk: null-supplier rows = DB (253)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff7@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff7@vegahomes.lk: row count = DB (187)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "187 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff7@vegahomes.lk: null-supplier rows = DB (142)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff8@vegahomes.lk: no foreign project",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "foreign=[]"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff8@vegahomes.lk: row count = DB (149)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "149 rows"
+ },
+ {
+  "id": "P3",
+  "name": "perf.staff8@vegahomes.lk: null-supplier rows = DB (110)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P3",
+  "name": "member branch: perf.staff1 (member-only) sees its 7 member projects with items",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "missing=[]"
+ },
+ {
+  "id": "P3",
+  "name": "owner branch: perf.staff13 (owner-only) sees its 3 owned projects with items",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "missing=[]"
+ },
+ {
+  "id": "P4",
+  "name": "query ?projectId=perf_p001 ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison?projectId=perf_p001",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes vs 62924"
+ },
+ {
+  "id": "P4",
+  "name": "query ?project=perf_p001&project=perf_p002 ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison?project=perf_p001&project=perf_p002",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes vs 62924"
+ },
+ {
+  "id": "P4",
+  "name": "query ?all=1 ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison?all=1",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes vs 62924"
+ },
+ {
+  "id": "P4",
+  "name": "query ?scope=all ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison?scope=all",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes vs 62924"
+ },
+ {
+  "id": "P4",
+  "name": "query ?role=Admin ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison?role=Admin",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes vs 62924"
+ },
+ {
+  "id": "P4",
+  "name": "query ?userId=u2 ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison?userId=u2",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes vs 62924"
+ },
+ {
+  "id": "P4",
+  "name": "query ?projectId=' or 1=1-- ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison?projectId=' or 1=1--",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes vs 62924"
+ },
+ {
+  "id": "P4",
+  "name": "query ?projectId[]=perf_p001 ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison?projectId[]=perf_p001",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes vs 62924"
+ },
+ {
+  "id": "P4",
+  "name": "query ?x=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison?x=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes vs 62924"
+ },
+ {
+  "id": "P4",
+  "name": "header X-User-Id ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes"
+ },
+ {
+  "id": "P4",
+  "name": "header X-Role ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes"
+ },
+ {
+  "id": "P4",
+  "name": "header X-Forwarded-For ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes"
+ },
+ {
+  "id": "P4",
+  "name": "header x-middleware-subrequest ignored (body identical)",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "62924 bytes"
+ },
+ {
+  "id": "P5",
+  "name": "fixture: groups that also exist on foreign projects",
+  "method": "-",
+  "path": "-",
+  "status": 0,
+  "verdict": "PASS",
+  "note": "10 groups"
+ },
+ {
+  "id": "P5",
+  "name": "detail = list for 'Bar Bender #41' / Kg",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "list=['perf_p012'] detail=['perf_p012']"
+ },
+ {
+  "id": "P5",
+  "name": "detail = list for 'Bricks #13' / No",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "list=['perf_p014'] detail=['perf_p014']"
+ },
+ {
+  "id": "P5",
+  "name": "detail = list for 'Carpenter #20' / Cube",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "list=['perf_p027'] detail=['perf_p027']"
+ },
+ {
+  "id": "P5",
+  "name": "detail = list for 'Compactor #11' / Kg",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "list=['perf_p014'] detail=['perf_p014']"
+ },
+ {
+  "id": "P5",
+  "name": "detail = list for 'Compactor #13' / Cube",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "list=['perf_p027'] detail=['perf_p027']"
+ },
+ {
+  "id": "P5",
+  "name": "detail = list for 'Compactor #19' / Kg",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "list=['perf_p025'] detail=['perf_p025']"
+ },
+ {
+  "id": "P5",
+  "name": "detail = list for 'Compactor #5' / No",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "list=['perf_p014'] detail=['perf_p014']"
+ },
+ {
+  "id": "P5",
+  "name": "detail = list for 'Compactor #50' / Litre",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "list=['perf_p012', 'perf_p025'] detail=['perf_p012', 'perf_p025']"
+ },
+ {
+  "id": "P5",
+  "name": "detail = list for 'Concrete Mixer #25' / Day",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "list=['perf_p027'] detail=['perf_p027']"
+ },
+ {
+  "id": "P5",
+  "name": "detail = list for 'Concrete Mixer #7' / Cube",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "list=['perf_p004'] detail=['perf_p004']"
+ },
+ {
+  "id": "P5",
+  "name": "foreign-only group 'Cement' absent from staff list",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P5",
+  "name": "foreign-only group detail -> 404",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 404,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not found\"}"
+ },
+ {
+  "id": "P6",
+  "name": "fixture: admin creates Staff with only priceComparison:view",
+  "method": "POST",
+  "path": "/api/users",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "{\"name\":\"S5 empty\",\"email\":\"s5.empty.1794567761@vegahomes.lk\",\"role\":\"Staff\",\"status\":\"Active\"}"
+ },
+ {
+  "id": "P6",
+  "name": "zero-project staff -> 200 []",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "[]"
+ },
+ {
+  "id": "P6",
+  "name": "zero-project staff, item detail -> 404",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison/item",
+  "status": 404,
+  "verdict": "PASS",
+  "note": "{\"error\":\"Not found\"}"
+ },
+ {
+  "id": "P7",
+  "name": "fixture: admin adds perf.staff13 to p1",
+  "method": "POST",
+  "path": "/api/projects/p1/members",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "{\"ok\":true}"
+ },
+ {
+  "id": "P7",
+  "name": "same session now sees p1",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "P7",
+  "name": "fixture: admin removes the membership",
+  "method": "DELETE",
+  "path": "/api/projects/p1/members/perf_u013",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "{\"ok\":true}"
+ },
+ {
+  "id": "P7",
+  "name": "same session no longer sees p1",
+  "method": "GET",
+  "path": "/api/suppliers/price-comparison",
+  "status": 200,
+  "verdict": "PASS",
+  "note": ""
+ },
+ {
+  "id": "CL",
+  "name": "cleanup: delete the zero-project user",
+  "method": "DELETE",
+  "path": "/api/users/<s5.empty>",
+  "status": 200,
+  "verdict": "PASS",
+  "note": "{\"ok\":true}"
+ }
+]

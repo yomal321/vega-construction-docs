@@ -1,0 +1,524 @@
+[
+ [
+  "S3",
+  "stage startDate='",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "stage completionDate='",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "milestone dueDate='",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "project start='",
+  "PATCH",
+  "/api/projects/perf_p004",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "expense payment date='",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e001/payments",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "stage startDate=not-a-date",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "stage completionDate=not-a-date",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "milestone dueDate=not-a-date",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "project start=not-a-date",
+  "PATCH",
+  "/api/projects/perf_p004",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "expense payment date=not-a-date",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e001/payments",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "stage startDate=2026-13-45",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "stage completionDate=2026-13-45",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "milestone dueDate=2026-13-45",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "project start=2026-13-45",
+  "PATCH",
+  "/api/projects/perf_p004",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "expense payment date=2026-13-45",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e001/payments",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "stage startDate=2026-01-05'; select ",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "stage completionDate=2026-01-05'; select ",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "milestone dueDate=2026-01-05'; select ",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "project start=2026-01-05'; select ",
+  "PATCH",
+  "/api/projects/perf_p004",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "expense payment date=2026-01-05'; select ",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e001/payments",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "stage startDate=x start-sleep -s 15",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "stage completionDate=x start-sleep -s 15",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "milestone dueDate=x start-sleep -s 15",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "project start=x start-sleep -s 15",
+  "PATCH",
+  "/api/projects/perf_p004",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "expense payment date=x start-sleep -s 15",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e001/payments",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "new project start=garbage",
+  "POST",
+  "/api/projects",
+  400,
+  "PASS",
+  "{\"error\":\"Enter a valid date\"}"
+ ],
+ [
+  "S3",
+  "payment method not in enum",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e001/payments",
+  400,
+  "PASS",
+  "{\"error\":\"Choose a valid payment method\"}"
+ ],
+ [
+  "S3",
+  "payment method Cheque (expense)",
+  "POST",
+  "/api/projects/perf_p004/expenses/perf_p004_e001/payments",
+  400,
+  "PASS",
+  "{\"error\":\"Cheque Invoiced Date is required\"}"
+ ],
+ [
+  "S3",
+  "NUL byte in supplier name",
+  "POST",
+  "/api/suppliers",
+  400,
+  "PASS",
+  "{\"error\":\"Name contains an invalid character\"}"
+ ],
+ [
+  "S3",
+  "NUL byte in trade name",
+  "POST",
+  "/api/trades",
+  400,
+  "PASS",
+  "{\"error\":\"Name contains an invalid character\"}"
+ ],
+ [
+  "S3",
+  "malformed JSON (suppliers)",
+  "POST",
+  "/api/suppliers",
+  400,
+  "PASS",
+  "{\"error\":\"Invalid request body\"}"
+ ],
+ [
+  "S3",
+  "malformed JSON (php payload)",
+  "POST",
+  "/api/projects/perf_p004/bsr",
+  400,
+  "PASS",
+  "{\"error\":\"Invalid request body\"}"
+ ],
+ [
+  "S3",
+  "malformed JSON (PATCH)",
+  "PATCH",
+  "/api/projects/perf_p004",
+  400,
+  "PASS",
+  "{\"error\":\"Invalid request body\"}"
+ ],
+ [
+  "S3",
+  "15MB body",
+  "POST",
+  "/api/suppliers",
+  400,
+  "PASS",
+  "{\"error\":\"Invalid request body\"}"
+ ],
+ [
+  "S3",
+  "basic-price unknown activity",
+  "POST",
+  "/api/projects/perf_p004/basic-price",
+  400,
+  "PASS",
+  "{\"error\":\"Choose an existing activity\"}"
+ ],
+ [
+  "S3",
+  "delete in-use activity -> 409",
+  "DELETE",
+  "/api/activities/05",
+  409,
+  "PASS",
+  "{\"error\":\"This activity is used by 133 Basic Price draft(s). Reassign or delete them first.\"}"
+ ],
+ [
+  "S3",
+  "PATCH unknown activity code",
+  "PATCH",
+  "/api/activities/ZZZ-NOPE",
+  404,
+  "PASS",
+  "{\"error\":\"Activity not found\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/suppliers",
+  "POST",
+  "/api/suppliers",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/sub-contractors",
+  "POST",
+  "/api/sub-contractors",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/activities",
+  "POST",
+  "/api/activities",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/trades",
+  "POST",
+  "/api/trades",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/units",
+  "POST",
+  "/api/units",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/categories",
+  "POST",
+  "/api/categories",
+  400,
+  "PASS",
+  "{\"error\":\"Label must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/roles",
+  "POST",
+  "/api/roles",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/projects",
+  "POST",
+  "/api/projects",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/projects/perf_p004/basic-price",
+  "POST",
+  "/api/projects/perf_p004/basic-price",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/projects/perf_p004/basic-rate",
+  "POST",
+  "/api/projects/perf_p004/basic-rate",
+  400,
+  "PASS",
+  "{\"error\":\"Code is required\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/payments/filter-presets",
+  "POST",
+  "/api/payments/filter-presets",
+  400,
+  "PASS",
+  "{\"error\":\"The name can be at most 60 characters\"}"
+ ],
+ [
+  "S4",
+  "200k name -> /api/users",
+  "POST",
+  "/api/users",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k field -> PATCH /api/suppliers/perf_sup001",
+  "PATCH",
+  "/api/suppliers/perf_sup001",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k field -> PATCH /api/company-profile",
+  "PATCH",
+  "/api/company-profile",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k field -> PATCH /api/projects/perf_p004",
+  "PATCH",
+  "/api/projects/perf_p004",
+  400,
+  "PASS",
+  "{\"error\":\"Client must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "200k field -> PATCH /api/users/perf.staff9%40vegahomes.lk",
+  "PATCH",
+  "/api/users/perf.staff9%40vegahomes.lk",
+  400,
+  "PASS",
+  "{\"error\":\"Name must be 120 characters or fewer\"}"
+ ],
+ [
+  "S4",
+  "login 100k email/password",
+  "POST",
+  "/api/auth/login",
+  401,
+  "FAIL",
+  "{\"error\":\"Invalid email or password\"}"
+ ],
+ [
+  "S4",
+  "role with 501 permissions",
+  "POST",
+  "/api/roles",
+  400,
+  "PASS",
+  "{\"error\":\"A role can have at most 500 permissions\"}"
+ ],
+ [
+  "S4",
+  "clone with 100k codes",
+  "POST",
+  "/api/projects/perf_p004/basic-rate/clone",
+  400,
+  "PASS",
+  "{\"error\":\"Pick at most 1000 items to clone\"}"
+ ],
+ [
+  "S4",
+  "normal supplier still accepted",
+  "POST",
+  "/api/suppliers",
+  200,
+  "PASS",
+  "{\"id\":\"sup_9156a93d-c6a3-4ad5-8a39-e14f54ce0a66\",\"name\":\"Regression Supplier OK\"}"
+ ],
+ [
+  "S4",
+  "valid stage date still accepted",
+  "PATCH",
+  "/api/projects/perf_p004/stages/perf_p004_s1",
+  200,
+  "PASS",
+  "{\"ok\":true}"
+ ]
+]

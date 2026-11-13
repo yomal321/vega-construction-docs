@@ -1,0 +1,389 @@
+Found Java version 17.0.21
+Available memory: 7568 MB
+Using JVM args: -Xmx1892m
+480 [main] INFO  org.parosproxy.paros.Constant - Copying default configuration to /home/zap/.ZAP/config.xml
+604 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/session
+605 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/dirbuster
+606 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/fuzzers
+607 [main] INFO  org.parosproxy.paros.Constant - Creating directory /home/zap/.ZAP/plugin
+Nov 13, 2026 11:16:40 AM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+Job replacer set deleteAllRules = true
+Job replacer set description = session
+Job replacer set matchType = req_header
+Job replacer set matchString = Cookie
+Job replacer set replacementString = vega_session=<redacted>
+Job replacer set description = origin
+Job replacer set matchType = req_header
+Job replacer set matchString = Origin
+Job replacer set replacementString = http://host.docker.internal:3201
+Job requestor set url = http://host.docker.internal:3201/
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/login
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/projects
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/projects/perf_p004
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/basic-price
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/basic-rate
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/payments
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/activities
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/suppliers
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/suppliers/perf_sup001
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/suppliers/compare
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/suppliers/compare/item?name=Cement&unit=Bag
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/sub-contractors/perf_sc001
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/users
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/users/perf.staff9%40vegahomes.lk
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/roles
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/settings
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/settings/company-profile
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/settings/field-options
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/settings/project-access
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/cost-plus
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/auth/me
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/dashboard
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/notifications
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/bsr
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/expenses?page=1&search=a
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/stages
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/items
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/members
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/variations
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/basic-price
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/basic-rate
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/basic-rate/next-code?cat=Labour
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/basic-rate/L-001/history
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/expenses/perf_p004_e001/payments
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1/payments
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/payments?page=1&pageSize=25&search=a&status=all&from=2026-01-01&to=2026-12-31
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/payments/filter-presets
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/payments/other-payees/history?payee=abc&from=2026-01-01
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/expenses/other-payees
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/expenses/next-invoice?projectId=perf_p004
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/basic-rate
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/basic-price
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/basic-rate/next-code?projectId=perf_p004&cat=Labour
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/suppliers
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/suppliers/perf_sup001
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/sub-contractors
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/sub-contractors/perf_sc001
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/suppliers/price-comparison
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/suppliers/price-comparison/item?name=Cement&unit=Bag
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/activities
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/categories
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/trades
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/units
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/company-profile
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/users
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/users/perf.staff9%40vegahomes.lk
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/users/perf.staff9%40vegahomes.lk/projects
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/roles
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/roles/perf_role_pm
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/permissions/catalog
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/cost-plus
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/healthz
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/ready
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/auth/login
+Job requestor set method = POST
+Job requestor set data = {"email": "zap.probe@vegahomes.lk", "password": "Wrong-Password-1!", "remember": true}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/suppliers
+Job requestor set method = POST
+Job requestor set data = {"name": "ZAP Supplier", "phone": "0771234567", "email": "zap@x.lk", "address": "Colombo"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/suppliers/perf_sup001
+Job requestor set method = PATCH
+Job requestor set data = {"name": "Perf Supplier 001", "phone": "0771234567"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/sub-contractors
+Job requestor set method = POST
+Job requestor set data = {"name": "ZAP Sub", "trade": "Masonry", "phone": "0771234567"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/activities
+Job requestor set method = POST
+Job requestor set data = {"code": "ZAP1", "name": "ZAP activity"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/categories
+Job requestor set method = POST
+Job requestor set data = {"label": "ZAP Cat"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/trades
+Job requestor set method = POST
+Job requestor set data = {"name": "ZAP Trade"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/units
+Job requestor set method = POST
+Job requestor set data = {"name": "zapunit"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects
+Job requestor set method = POST
+Job requestor set data = {"name": "ZAP Project", "client": "ZAP Client", "location": "Colombo", "start": "2026-11-01", "stages": 4, "contract": 1000000}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004
+Job requestor set method = PATCH
+Job requestor set data = {"name": "Perf Residence 4", "client": "Client", "location": "Kandy"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/expenses
+Job requestor set method = POST
+Job requestor set data = {"date": "2026-11-01", "vendor": "ZAP Vendor", "category": "Material", "amount": 1000, "description": "zap", "lineItems": []}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/expenses/perf_p004_e001/payments
+Job requestor set method = POST
+Job requestor set data = {"amount": 1, "date": "2026-11-01", "method": "Cash"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/expenses/perf_p004_e130/payments
+Job requestor set method = POST
+Job requestor set data = {"amount": 1, "date": "2026-11-01", "method": "Cheque", "chequeInvoicedDate": "2026-11-01", "chequeReleaseDate": "2026-11-05"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/expenses/perf_p004_e130/payments
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/payments/cheques
+Job requestor set method = GET
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/bsr
+Job requestor set method = POST
+Job requestor set data = {"itemId": "perf_p004_ai001", "qty": 1, "floor": "Ground"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/basic-price
+Job requestor set method = POST
+Job requestor set data = {"activity": "ZAP1", "cat": "Material", "name": "ZAP draft", "unit": "Bag", "price": 100}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/basic-rate
+Job requestor set method = POST
+Job requestor set data = {"cat": "Material", "name": "ZAP rate", "unit": "Bag", "rate": 100}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/variations
+Job requestor set method = POST
+Job requestor set data = {"name": "ZAP variation", "description": "zap", "amount": 1000, "date": "2026-11-01"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/stages/perf_p004_s1
+Job requestor set method = PATCH
+Job requestor set data = {"startDate": "2026-01-01"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1
+Job requestor set method = PATCH
+Job requestor set data = {"dueDate": "2026-12-01"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/payments/filter-presets
+Job requestor set method = POST
+Job requestor set data = {"name": "ZAP preset", "query": "search=a"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/users
+Job requestor set method = POST
+Job requestor set data = {"email": "zap.user@vegahomes.lk", "name": "ZAP User", "password": "Zap-Long-Password-2026!", "role": "Staff"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/users/perf.staff9%40vegahomes.lk
+Job requestor set method = PATCH
+Job requestor set data = {"name": "Perf Staff 9"}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/roles
+Job requestor set method = POST
+Job requestor set data = {"name": "ZAP Role", "permissions": [{"module": "projects", "action": "view"}]}
+Job requestor set headers = [Content-Type: application/json]
+Job requestor set url = http://host.docker.internal:3201/api/company-profile
+Job requestor set method = PATCH
+Job requestor set data = {"name": "Vega Construction", "address": "Colombo"}
+Job requestor set headers = [Content-Type: application/json]
+Job spider set context = vega
+Job spider set url = http://host.docker.internal:3201/
+Job spider set maxDuration = 3
+Job spiderAjax set context = vega
+Job spiderAjax set url = http://host.docker.internal:3201/
+Job spiderAjax set maxDuration = 6
+Job spiderAjax set browserId = firefox-headless
+Job passiveScan-wait set maxDuration = 5
+Job activeScan set context = vega
+Job activeScan set maxRuleDurationInMins = 3
+Job activeScan set maxScanDurationInMins = 60
+Job activeScan set threadPerHost = 4
+Job passiveScan-wait set maxDuration = 5
+Job report set template = traditional-html
+Job report set reportDir = /zap/wrk
+Job report set reportFile = zap-report.html
+Job report set template = traditional-json
+Job report set reportDir = /zap/wrk
+Job report set reportFile = zap-report.json
+Job replacer set deleteAllRules = true
+Job replacer started
+Existing Replace rules deleted
+Job replacer finished, time taken: 00:00:00
+Job requestor started
+Job requestor requesting URL http://host.docker.internal:3201/
+Job requestor requesting URL http://host.docker.internal:3201/login
+Job requestor requesting URL http://host.docker.internal:3201/projects
+Job requestor requesting URL http://host.docker.internal:3201/projects/perf_p004
+Job requestor requesting URL http://host.docker.internal:3201/basic-price
+Job requestor requesting URL http://host.docker.internal:3201/basic-rate
+Job requestor requesting URL http://host.docker.internal:3201/payments
+Job requestor requesting URL http://host.docker.internal:3201/activities
+Job requestor requesting URL http://host.docker.internal:3201/suppliers
+Job requestor requesting URL http://host.docker.internal:3201/suppliers/perf_sup001
+Job requestor requesting URL http://host.docker.internal:3201/suppliers/compare
+Job requestor requesting URL http://host.docker.internal:3201/suppliers/compare/item?name=Cement&unit=Bag
+Job requestor requesting URL http://host.docker.internal:3201/sub-contractors/perf_sc001
+Job requestor requesting URL http://host.docker.internal:3201/users
+Job requestor requesting URL http://host.docker.internal:3201/users/perf.staff9%40vegahomes.lk
+Job requestor requesting URL http://host.docker.internal:3201/roles
+Job requestor requesting URL http://host.docker.internal:3201/settings
+Job requestor requesting URL http://host.docker.internal:3201/settings/company-profile
+Job requestor requesting URL http://host.docker.internal:3201/settings/field-options
+Job requestor requesting URL http://host.docker.internal:3201/settings/project-access
+Job requestor requesting URL http://host.docker.internal:3201/cost-plus
+Job requestor requesting URL http://host.docker.internal:3201/api/auth/me
+Job requestor requesting URL http://host.docker.internal:3201/api/dashboard
+Job requestor requesting URL http://host.docker.internal:3201/api/notifications
+Job requestor requesting URL http://host.docker.internal:3201/api/projects
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/bsr
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/expenses?page=1&search=a
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/stages
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/items
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/members
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/variations
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/basic-price
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/basic-rate
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/basic-rate/next-code?cat=Labour
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/basic-rate/L-001/history
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/expenses/perf_p004_e001/payments
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1/payments
+Job requestor requesting URL http://host.docker.internal:3201/api/payments?page=1&pageSize=25&search=a&status=all&from=2026-01-01&to=2026-12-31
+Job requestor requesting URL http://host.docker.internal:3201/api/payments/filter-presets
+Job requestor requesting URL http://host.docker.internal:3201/api/payments/other-payees/history?payee=abc&from=2026-01-01
+Job requestor requesting URL http://host.docker.internal:3201/api/expenses/other-payees
+Job requestor requesting URL http://host.docker.internal:3201/api/expenses/next-invoice?projectId=perf_p004
+Job requestor requesting URL http://host.docker.internal:3201/api/basic-rate
+Job requestor requesting URL http://host.docker.internal:3201/api/basic-price
+Job requestor requesting URL http://host.docker.internal:3201/api/basic-rate/next-code?projectId=perf_p004&cat=Labour
+Job requestor requesting URL http://host.docker.internal:3201/api/suppliers
+Job requestor requesting URL http://host.docker.internal:3201/api/suppliers/perf_sup001
+Job requestor requesting URL http://host.docker.internal:3201/api/sub-contractors
+Job requestor requesting URL http://host.docker.internal:3201/api/sub-contractors/perf_sc001
+Job requestor requesting URL http://host.docker.internal:3201/api/suppliers/price-comparison
+Job requestor requesting URL http://host.docker.internal:3201/api/suppliers/price-comparison/item?name=Cement&unit=Bag
+Job requestor requesting URL http://host.docker.internal:3201/api/activities
+Job requestor requesting URL http://host.docker.internal:3201/api/categories
+Job requestor requesting URL http://host.docker.internal:3201/api/trades
+Job requestor requesting URL http://host.docker.internal:3201/api/units
+Job requestor requesting URL http://host.docker.internal:3201/api/company-profile
+Job requestor requesting URL http://host.docker.internal:3201/api/users
+Job requestor requesting URL http://host.docker.internal:3201/api/users/perf.staff9%40vegahomes.lk
+Job requestor requesting URL http://host.docker.internal:3201/api/users/perf.staff9%40vegahomes.lk/projects
+Job requestor requesting URL http://host.docker.internal:3201/api/roles
+Job requestor requesting URL http://host.docker.internal:3201/api/roles/perf_role_pm
+Job requestor requesting URL http://host.docker.internal:3201/api/permissions/catalog
+Job requestor requesting URL http://host.docker.internal:3201/api/cost-plus
+Job requestor requesting URL http://host.docker.internal:3201/api/healthz
+Job requestor requesting URL http://host.docker.internal:3201/api/ready
+Job requestor requesting URL http://host.docker.internal:3201/api/auth/login
+Job requestor requesting URL http://host.docker.internal:3201/api/suppliers
+Job requestor requesting URL http://host.docker.internal:3201/api/suppliers/perf_sup001
+Job requestor requesting URL http://host.docker.internal:3201/api/sub-contractors
+Job requestor requesting URL http://host.docker.internal:3201/api/activities
+Job requestor requesting URL http://host.docker.internal:3201/api/categories
+Job requestor requesting URL http://host.docker.internal:3201/api/trades
+Job requestor requesting URL http://host.docker.internal:3201/api/units
+Job requestor requesting URL http://host.docker.internal:3201/api/projects
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/expenses
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/expenses/perf_p004_e001/payments
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/expenses/perf_p004_e130/payments
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/expenses/perf_p004_e130/payments
+Job requestor requesting URL http://host.docker.internal:3201/api/payments/cheques
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/bsr
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/basic-price
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/basic-rate
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/variations
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/stages/perf_p004_s1
+Job requestor requesting URL http://host.docker.internal:3201/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1
+Job requestor requesting URL http://host.docker.internal:3201/api/payments/filter-presets
+Job requestor requesting URL http://host.docker.internal:3201/api/users
+Job requestor requesting URL http://host.docker.internal:3201/api/users/perf.staff9%40vegahomes.lk
+Job requestor requesting URL http://host.docker.internal:3201/api/roles
+Job requestor requesting URL http://host.docker.internal:3201/api/company-profile
+Job requestor finished, time taken: 00:00:02
+Job spider started
+Job spider requesting URL http://host.docker.internal:3201
+Job spider found 132 URLs
+Job spider finished, time taken: 00:00:01
+Job spiderAjax started
+Job spiderAjax terminated
+Job spiderAjax found 2,578 URLs
+Job spiderAjax finished, time taken: 00:06:07
+Job passiveScan-wait started
+Job passiveScan-wait finished, time taken: 00:05:00
+Job activeScan started
+Job activeScan finished, time taken: 00:08:03
+Job passiveScan-wait started
+Job passiveScan-wait finished, time taken: 00:00:00
+Job report started
+Job report generated report /zap/wrk/zap-report.html
+Job report finished, time taken: 00:00:00
+Job report started
+Job report generated report /zap/wrk/zap-report.json
+Job report finished, time taken: 00:00:00
+Automation plan succeeded!

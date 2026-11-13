@@ -1,0 +1,13 @@
+variation fixture: 400 {"error":"Name is required"}
+preset fixture: 400 {"error":"Unknown payment status"}
+Counter({'PASS': 264, 'REVIEW': 7, 'FAIL': 3})
+('B IDOR foreign project', 'staff -> p1', 'POST', '/api/basic-price/bp1/promote', 400, 'REVIEW', '{"error":"Code is required"}')
+('C cross-parent IDOR', 'own URL + foreign child', 'POST', '/api/projects/perf_p004/basic-price/bp1/promote', 400, 'REVIEW', '{"error":"Code is required"}')
+('C cross-parent IDOR', 'own URL + foreign child', 'PATCH', '/api/projects/perf_p004/basic-rate/L-003', 200, 'FAIL', '{"code":"L-003","name":"Electrician #14","unit":"Bag","rate":1,"supplierId":null}')
+('C cross-parent IDOR', 'own URL + foreign child', 'PATCH', '/api/projects/perf_p004/items/cmw0l32w20025udlwvgz032ax', 400, 'REVIEW', '{"error":"Unit is required"}')
+('C cross-parent IDOR', 'own URL + foreign child', 'PATCH', '/api/projects/perf_p004/stages/perf_p004_s1/milestones/perf_p004_s1_ms1/payments/cmw0l33170061udlwstkwf37m', 400, 'REVIEW', '{"error":"Invalid cheque status"}')
+('C cross-parent IDOR', 'own URL + foreign child', 'POST', '/api/projects/perf_p004/basic-rate/clone', 400, 'REVIEW', '{"error":"Invalid input: expected array, received undefined"}')
+('D list leakage', 'staff list has no foreign ids', 'GET', '/api/payments/other-payees/history', 400, 'FAIL', '35 bytes')
+('G session', 'cookie flags', 'POST', '/api/auth/login', '-', 'FAIL', 'vega_session=<redacted>; Path=/; Secure; HttpOnly; SameSite=lax')
+('I injection', 'SQLi in supplier name', 'POST', '/api/suppliers', 200, 'REVIEW', 'stored verbatim; JSON API, React escapes on render - check PDF/XLSX export')
+('I injection', 'XSS in supplier name', 'POST', '/api/suppliers', 200, 'REVIEW', 'stored verbatim; JSON API, React escapes on render - check PDF/XLSX export')

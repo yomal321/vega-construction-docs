@@ -1,0 +1,101 @@
+eligible staff accounts: 13
+account                          oracle proj seen proj   rows db rows hidden proj
+perf.staff10@vegahomes.lk                  1         1     34      34          33
+perf.staff11@vegahomes.lk                  5         5    175     175          29
+perf.staff13@vegahomes.lk                  3         3    104     104          31
+perf.staff14@vegahomes.lk                  6         6    214     214          28
+perf.staff16@vegahomes.lk                  5         5    181     181          29
+perf.staff17@vegahomes.lk                  7         7    253     253          27
+perf.staff19@vegahomes.lk                  3         3    105     105          31
+perf.staff1@vegahomes.lk                   7         7    245     245          27
+perf.staff2@vegahomes.lk                   5         5    179     179          29
+perf.staff4@vegahomes.lk                   8         8    296     296          26
+perf.staff5@vegahomes.lk                   9         9    329     329          25
+perf.staff7@vegahomes.lk                   5         5    187     187          29
+perf.staff8@vegahomes.lk                   4         4    149     149          30
+P1 | no cookie -> 401 | GET | /api/suppliers/price-comparison | 401 | PASS | {"error":"Not authenticated"}
+P1 | forged alg:none cookie -> 401 | GET | /api/suppliers/price-comparison | 401 | PASS | {"error":"Not authenticated"}
+P1 | x-middleware-subrequest bypass header, no cookie -> 401 | GET | /api/suppliers/price-comparison | 401 | PASS | {"error":"Not authenticated"}
+P1 | x-middleware-subrequest (proxy path), no cookie -> 401 | GET | /api/suppliers/price-comparison | 401 | PASS | {"error":"Not authenticated"}
+P1 | staff without priceComparison:view -> 403 (list) | GET | /api/suppliers/price-comparison | 403 | PASS | {"error":"Missing permission: priceComparison:view"}
+P1 | staff without priceComparison:view -> 403 (item) | GET | /api/suppliers/price-comparison/item | 403 | PASS | {"error":"Missing permission: priceComparison:view"}
+P1 | POST on list -> 405 | POST | /api/suppliers/price-comparison | 405 | PASS | 
+P2 | admin sees every base_item (1114) | GET | /api/suppliers/price-comparison | 200 | PASS | 1114 rows
+P2 | admin sees every project with items (34) | GET | /api/suppliers/price-comparison | 200 | PASS | 34 projects
+P3 | perf.staff10@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff10@vegahomes.lk: row count = DB (34) | GET | /api/suppliers/price-comparison | 200 | PASS | 34 rows
+P3 | perf.staff10@vegahomes.lk: null-supplier rows = DB (30) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff11@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff11@vegahomes.lk: row count = DB (175) | GET | /api/suppliers/price-comparison | 200 | PASS | 175 rows
+P3 | perf.staff11@vegahomes.lk: null-supplier rows = DB (128) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff13@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff13@vegahomes.lk: row count = DB (104) | GET | /api/suppliers/price-comparison | 200 | PASS | 104 rows
+P3 | perf.staff13@vegahomes.lk: null-supplier rows = DB (78) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff14@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff14@vegahomes.lk: row count = DB (214) | GET | /api/suppliers/price-comparison | 200 | PASS | 214 rows
+P3 | perf.staff14@vegahomes.lk: null-supplier rows = DB (161) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff16@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff16@vegahomes.lk: row count = DB (181) | GET | /api/suppliers/price-comparison | 200 | PASS | 181 rows
+P3 | perf.staff16@vegahomes.lk: null-supplier rows = DB (131) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff17@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff17@vegahomes.lk: row count = DB (253) | GET | /api/suppliers/price-comparison | 200 | PASS | 253 rows
+P3 | perf.staff17@vegahomes.lk: null-supplier rows = DB (187) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff19@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff19@vegahomes.lk: row count = DB (105) | GET | /api/suppliers/price-comparison | 200 | PASS | 105 rows
+P3 | perf.staff19@vegahomes.lk: null-supplier rows = DB (72) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff1@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff1@vegahomes.lk: row count = DB (245) | GET | /api/suppliers/price-comparison | 200 | PASS | 245 rows
+P3 | perf.staff1@vegahomes.lk: null-supplier rows = DB (177) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff2@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff2@vegahomes.lk: row count = DB (179) | GET | /api/suppliers/price-comparison | 200 | PASS | 179 rows
+P3 | perf.staff2@vegahomes.lk: null-supplier rows = DB (133) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff4@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff4@vegahomes.lk: row count = DB (296) | GET | /api/suppliers/price-comparison | 200 | PASS | 296 rows
+P3 | perf.staff4@vegahomes.lk: null-supplier rows = DB (225) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff5@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff5@vegahomes.lk: row count = DB (329) | GET | /api/suppliers/price-comparison | 200 | PASS | 329 rows
+P3 | perf.staff5@vegahomes.lk: null-supplier rows = DB (253) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff7@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff7@vegahomes.lk: row count = DB (187) | GET | /api/suppliers/price-comparison | 200 | PASS | 187 rows
+P3 | perf.staff7@vegahomes.lk: null-supplier rows = DB (142) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | perf.staff8@vegahomes.lk: no foreign project | GET | /api/suppliers/price-comparison | 200 | PASS | foreign=[]
+P3 | perf.staff8@vegahomes.lk: row count = DB (149) | GET | /api/suppliers/price-comparison | 200 | PASS | 149 rows
+P3 | perf.staff8@vegahomes.lk: null-supplier rows = DB (110) | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P3 | member branch: perf.staff1 (member-only) sees its 7 member projects with items | GET | /api/suppliers/price-comparison | 200 | PASS | missing=[]
+P3 | owner branch: perf.staff13 (owner-only) sees its 3 owned projects with items | GET | /api/suppliers/price-comparison | 200 | PASS | missing=[]
+P4 | query ?projectId=perf_p001 ignored (body identical) | GET | /api/suppliers/price-comparison?projectId=perf_p001 | 200 | PASS | 62924 bytes vs 62924
+P4 | query ?project=perf_p001&project=perf_p002 ignored (body identical) | GET | /api/suppliers/price-comparison?project=perf_p001&project=perf_p002 | 200 | PASS | 62924 bytes vs 62924
+P4 | query ?all=1 ignored (body identical) | GET | /api/suppliers/price-comparison?all=1 | 200 | PASS | 62924 bytes vs 62924
+P4 | query ?scope=all ignored (body identical) | GET | /api/suppliers/price-comparison?scope=all | 200 | PASS | 62924 bytes vs 62924
+P4 | query ?role=Admin ignored (body identical) | GET | /api/suppliers/price-comparison?role=Admin | 200 | PASS | 62924 bytes vs 62924
+P4 | query ?userId=u2 ignored (body identical) | GET | /api/suppliers/price-comparison?userId=u2 | 200 | PASS | 62924 bytes vs 62924
+P4 | query ?projectId=' or 1=1-- ignored (body identical) | GET | /api/suppliers/price-comparison?projectId=' or 1=1-- | 200 | PASS | 62924 bytes vs 62924
+P4 | query ?projectId[]=perf_p001 ignored (body identical) | GET | /api/suppliers/price-comparison?projectId[]=perf_p001 | 200 | PASS | 62924 bytes vs 62924
+P4 | query ?x=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ignored (body identical) | GET | /api/suppliers/price-comparison?x=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | 200 | PASS | 62924 bytes vs 62924
+P4 | header X-User-Id ignored (body identical) | GET | /api/suppliers/price-comparison | 200 | PASS | 62924 bytes
+P4 | header X-Role ignored (body identical) | GET | /api/suppliers/price-comparison | 200 | PASS | 62924 bytes
+P4 | header X-Forwarded-For ignored (body identical) | GET | /api/suppliers/price-comparison | 200 | PASS | 62924 bytes
+P4 | header x-middleware-subrequest ignored (body identical) | GET | /api/suppliers/price-comparison | 200 | PASS | 62924 bytes
+P5 | fixture: groups that also exist on foreign projects | - | - | 0 | PASS | 10 groups
+P5 | detail = list for 'Bar Bender #41' / Kg | GET | /api/suppliers/price-comparison/item | 200 | PASS | list=['perf_p012'] detail=['perf_p012']
+P5 | detail = list for 'Bricks #13' / No | GET | /api/suppliers/price-comparison/item | 200 | PASS | list=['perf_p014'] detail=['perf_p014']
+P5 | detail = list for 'Carpenter #20' / Cube | GET | /api/suppliers/price-comparison/item | 200 | PASS | list=['perf_p027'] detail=['perf_p027']
+P5 | detail = list for 'Compactor #11' / Kg | GET | /api/suppliers/price-comparison/item | 200 | PASS | list=['perf_p014'] detail=['perf_p014']
+P5 | detail = list for 'Compactor #13' / Cube | GET | /api/suppliers/price-comparison/item | 200 | PASS | list=['perf_p027'] detail=['perf_p027']
+P5 | detail = list for 'Compactor #19' / Kg | GET | /api/suppliers/price-comparison/item | 200 | PASS | list=['perf_p025'] detail=['perf_p025']
+P5 | detail = list for 'Compactor #5' / No | GET | /api/suppliers/price-comparison/item | 200 | PASS | list=['perf_p014'] detail=['perf_p014']
+P5 | detail = list for 'Compactor #50' / Litre | GET | /api/suppliers/price-comparison/item | 200 | PASS | list=['perf_p012', 'perf_p025'] detail=['perf_p012', 'perf_p025']
+P5 | detail = list for 'Concrete Mixer #25' / Day | GET | /api/suppliers/price-comparison/item | 200 | PASS | list=['perf_p027'] detail=['perf_p027']
+P5 | detail = list for 'Concrete Mixer #7' / Cube | GET | /api/suppliers/price-comparison/item | 200 | PASS | list=['perf_p004'] detail=['perf_p004']
+P5 | foreign-only group 'Cement' absent from staff list | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P5 | foreign-only group detail -> 404 | GET | /api/suppliers/price-comparison/item | 404 | PASS | {"error":"Not found"}
+P6 | fixture: admin creates Staff with only priceComparison:view | POST | /api/users | 200 | PASS | {"name":"S5 empty","email":"s5.empty.1794567761@vegahomes.lk","role":"Staff","status":"Active"}
+P6 | zero-project staff -> 200 [] | GET | /api/suppliers/price-comparison | 200 | PASS | []
+P6 | zero-project staff, item detail -> 404 | GET | /api/suppliers/price-comparison/item | 404 | PASS | {"error":"Not found"}
+P7 | fixture: admin adds perf.staff13 to p1 | POST | /api/projects/p1/members | 200 | PASS | {"ok":true}
+P7 | same session now sees p1 | GET | /api/suppliers/price-comparison | 200 | PASS | 
+P7 | fixture: admin removes the membership | DELETE | /api/projects/p1/members/perf_u013 | 200 | PASS | {"ok":true}
+P7 | same session no longer sees p1 | GET | /api/suppliers/price-comparison | 200 | PASS | 
+CL | cleanup: delete the zero-project user | DELETE | /api/users/<s5.empty> | 200 | PASS | {"ok":true}
+
+TOTAL 84  PASS 84  FAIL 0
